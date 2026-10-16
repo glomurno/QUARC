@@ -1,0 +1,5061 @@
+{
+  "document": {
+    "bisimType": "strong",
+    "classes": [
+      [
+        21,
+        42,
+        67
+      ],
+      [
+        11,
+        33,
+        58
+      ],
+      [
+        25,
+        46,
+        71
+      ],
+      [
+        15,
+        37,
+        62
+      ],
+      [
+        20,
+        41
+      ],
+      [
+        66
+      ],
+      [
+        10,
+        32
+      ],
+      [
+        57
+      ],
+      [
+        24,
+        45
+      ],
+      [
+        70
+      ],
+      [
+        14,
+        36
+      ],
+      [
+        61
+      ],
+      [
+        5
+      ],
+      [
+        16,
+        28
+      ],
+      [
+        19,
+        40
+      ],
+      [
+        65
+      ],
+      [
+        9,
+        31
+      ],
+      [
+        56
+      ],
+      [
+        23,
+        44
+      ],
+      [
+        69
+      ],
+      [
+        13,
+        35
+      ],
+      [
+        60
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        27
+      ],
+      [
+        18,
+        39
+      ],
+      [
+        64
+      ],
+      [
+        8,
+        30
+      ],
+      [
+        55
+      ],
+      [
+        22,
+        43
+      ],
+      [
+        68
+      ],
+      [
+        12,
+        34
+      ],
+      [
+        59
+      ],
+      [
+        2
+      ],
+      [
+        17,
+        38
+      ],
+      [
+        63
+      ],
+      [
+        7,
+        29
+      ],
+      [
+        54
+      ],
+      [
+        1
+      ],
+      [
+        26
+      ],
+      [
+        53
+      ],
+      [
+        6
+      ],
+      [
+        0
+      ],
+      [
+        52
+      ],
+      [
+        51
+      ],
+      [
+        50
+      ],
+      [
+        49
+      ],
+      [
+        48
+      ],
+      [
+        47
+      ]
+    ],
+    "detail": {},
+    "equiv": {
+      "bisimilar": false
+    },
+    "graph": {
+      "edges": [
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t10, t12) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 86,
+                  "line": 2
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 84,
+                  "line": 2
+                }
+              },
+              "recvTag": 12,
+              "sendTag": 10
+            }
+          ],
+          "bends": [
+            {
+              "x": 75.038,
+              "y": 10.778
+            },
+            {
+              "x": 73.027,
+              "y": 10.557
+            },
+            {
+              "x": 70.671,
+              "y": 10.297
+            },
+            {
+              "x": 68.648,
+              "y": 10.074
+            }
+          ],
+          "from": 4,
+          "to": 5
+        },
+        {
+          "actions": [
+            {
+              "channel": {
+                "name": "qout",
+                "type": "qubit"
+              },
+              "kind": "send",
+              "label": "t11 : qout!qb2",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11,
+              "value": "qb2"
+            }
+          ],
+          "bends": [
+            {
+              "x": 172.29,
+              "y": 1.2279
+            },
+            {
+              "x": 172.29,
+              "y": 1.053
+            },
+            {
+              "x": 172.29,
+              "y": 0.81224
+            },
+            {
+              "x": 172.29,
+              "y": 0.61508
+            }
+          ],
+          "from": 45,
+          "to": 46
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t4, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 35,
+                  "line": 11
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 34,
+                  "line": 11
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 4
+            }
+          ],
+          "bends": [
+            {
+              "x": 149.29,
+              "y": 5.5091
+            },
+            {
+              "x": 149.29,
+              "y": 5.3173
+            },
+            {
+              "x": 149.29,
+              "y": 5.0968
+            },
+            {
+              "x": 149.29,
+              "y": 4.8962
+            }
+          ],
+          "from": 38,
+          "to": 39
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t3, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 15,
+                  "line": 11
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 14,
+                  "line": 11
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 3
+            }
+          ],
+          "bends": [
+            {
+              "x": 156.03,
+              "y": 5.5071
+            },
+            {
+              "x": 158.99,
+              "y": 5.2845
+            },
+            {
+              "x": 162.46,
+              "y": 5.0234
+            },
+            {
+              "x": 165.44,
+              "y": 4.7999
+            }
+          ],
+          "from": 38,
+          "to": 43
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t10 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 86,
+                  "line": 2
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 84,
+                  "line": 2
+                }
+              },
+              "tag": 10
+            }
+          ],
+          "bends": [
+            {
+              "x": 79.635,
+              "y": 12.537
+            },
+            {
+              "x": 79.635,
+              "y": 12.366
+            },
+            {
+              "x": 79.635,
+              "y": 12.138
+            },
+            {
+              "x": 79.635,
+              "y": 11.926
+            }
+          ],
+          "from": 3,
+          "to": 4
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 201.36,
+              "y": 4.0159
+            },
+            {
+              "x": 201.36,
+              "y": 3.771
+            },
+            {
+              "x": 201.36,
+              "y": 3.389
+            },
+            {
+              "x": 201.36,
+              "y": 3.1099
+            }
+          ],
+          "from": 68,
+          "to": 69
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 80.288,
+              "y": 3.7533
+            },
+            {
+              "x": 80.288,
+              "y": 3.5545
+            },
+            {
+              "x": 80.288,
+              "y": 3.3298
+            },
+            {
+              "x": 80.288,
+              "y": 3.1442
+            }
+          ],
+          "from": 22,
+          "to": 23
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t4, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 35,
+                  "line": 11
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 34,
+                  "line": 11
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 4
+            }
+          ],
+          "bends": [
+            {
+              "x": 64.136,
+              "y": 5.5079
+            },
+            {
+              "x": 62.909,
+              "y": 5.2888
+            },
+            {
+              "x": 61.473,
+              "y": 5.0323
+            },
+            {
+              "x": 60.234,
+              "y": 4.8109
+            }
+          ],
+          "from": 17,
+          "to": 18
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 193.4,
+              "y": 16.297
+            },
+            {
+              "x": 193.4,
+              "y": 16.122
+            },
+            {
+              "x": 193.4,
+              "y": 15.882
+            },
+            {
+              "x": 193.4,
+              "y": 15.685
+            }
+          ],
+          "from": 47,
+          "to": 48
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 193.4,
+              "y": 13.838
+            },
+            {
+              "x": 193.4,
+              "y": 13.655
+            },
+            {
+              "x": 193.4,
+              "y": 13.398
+            },
+            {
+              "x": 193.4,
+              "y": 13.191
+            }
+          ],
+          "from": 49,
+          "to": 50
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 149.29,
+              "y": 2.4548
+            },
+            {
+              "x": 149.29,
+              "y": 2.2758
+            },
+            {
+              "x": 149.29,
+              "y": 2.0403
+            },
+            {
+              "x": 149.29,
+              "y": 1.8471
+            }
+          ],
+          "from": 40,
+          "to": 41
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t10, t13) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 86,
+                  "line": 2
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 84,
+                  "line": 2
+                }
+              },
+              "recvTag": 13,
+              "sendTag": 10
+            }
+          ],
+          "bends": [
+            {
+              "x": 34.288,
+              "y": 7.266
+            },
+            {
+              "x": 34.288,
+              "y": 7.0743
+            },
+            {
+              "x": 34.288,
+              "y": 6.8538
+            },
+            {
+              "x": 34.288,
+              "y": 6.6532
+            }
+          ],
+          "from": 6,
+          "to": 7
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 191.22,
+              "y": 4.0159
+            },
+            {
+              "x": 191.22,
+              "y": 3.771
+            },
+            {
+              "x": 191.22,
+              "y": 3.389
+            },
+            {
+              "x": 191.22,
+              "y": 3.1099
+            }
+          ],
+          "from": 59,
+          "to": 60
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 103.29,
+              "y": 2.4548
+            },
+            {
+              "x": 103.29,
+              "y": 2.2758
+            },
+            {
+              "x": 103.29,
+              "y": 2.0403
+            },
+            {
+              "x": 103.29,
+              "y": 1.8471
+            }
+          ],
+          "from": 31,
+          "to": 32
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 191.22,
+              "y": 2.4908
+            },
+            {
+              "x": 191.22,
+              "y": 2.3073
+            },
+            {
+              "x": 191.22,
+              "y": 2.0509
+            },
+            {
+              "x": 191.22,
+              "y": 1.844
+            }
+          ],
+          "from": 60,
+          "to": 61
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 34.288,
+              "y": 3.7533
+            },
+            {
+              "x": 34.288,
+              "y": 3.5545
+            },
+            {
+              "x": 34.288,
+              "y": 3.3298
+            },
+            {
+              "x": 34.288,
+              "y": 3.1442
+            }
+          ],
+          "from": 12,
+          "to": 13
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t3, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 15,
+                  "line": 11
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 14,
+                  "line": 11
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 3
+            }
+          ],
+          "bends": [
+            {
+              "x": 70.871,
+              "y": 5.5073
+            },
+            {
+              "x": 72.57,
+              "y": 5.2867
+            },
+            {
+              "x": 74.561,
+              "y": 5.0283
+            },
+            {
+              "x": 76.273,
+              "y": 4.806
+            }
+          ],
+          "from": 17,
+          "to": 22
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 126.29,
+              "y": 2.4548
+            },
+            {
+              "x": 126.29,
+              "y": 2.2758
+            },
+            {
+              "x": 126.29,
+              "y": 2.0403
+            },
+            {
+              "x": 126.29,
+              "y": 1.8471
+            }
+          ],
+          "from": 35,
+          "to": 36
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t10, t13) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 86,
+                  "line": 2
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 84,
+                  "line": 2
+                }
+              },
+              "recvTag": 13,
+              "sendTag": 10
+            }
+          ],
+          "bends": [
+            {
+              "x": 61.043,
+              "y": 9.0218
+            },
+            {
+              "x": 59.787,
+              "y": 8.8025
+            },
+            {
+              "x": 58.317,
+              "y": 8.5457
+            },
+            {
+              "x": 57.048,
+              "y": 8.3242
+            }
+          ],
+          "from": 5,
+          "to": 16
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t92 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 72,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 70,
+                  "line": 14
+                }
+              },
+              "tag": 92
+            }
+          ],
+          "bends": [
+            {
+              "x": 192.67,
+              "y": 7.5286
+            },
+            {
+              "x": 191.72,
+              "y": 7.2107
+            },
+            {
+              "x": 190.05,
+              "y": 6.6539
+            },
+            {
+              "x": 189.05,
+              "y": 6.3193
+            }
+          ],
+          "from": 53,
+          "to": 54
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t1, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 15,
+                  "line": 8
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 14,
+                  "line": 8
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 1
+            }
+          ],
+          "bends": [
+            {
+              "x": 57.826,
+              "y": 7.2643
+            },
+            {
+              "x": 59.476,
+              "y": 7.0437
+            },
+            {
+              "x": 61.408,
+              "y": 6.7852
+            },
+            {
+              "x": 63.071,
+              "y": 6.5629
+            }
+          ],
+          "from": 16,
+          "to": 17
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 149.29,
+              "y": 3.7533
+            },
+            {
+              "x": 149.29,
+              "y": 3.5545
+            },
+            {
+              "x": 149.29,
+              "y": 3.3298
+            },
+            {
+              "x": 149.29,
+              "y": 3.1442
+            }
+          ],
+          "from": 39,
+          "to": 40
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t2, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 35,
+                  "line": 8
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 34,
+                  "line": 8
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 2
+            }
+          ],
+          "bends": [
+            {
+              "x": 119.86,
+              "y": 7.266
+            },
+            {
+              "x": 119.86,
+              "y": 7.0743
+            },
+            {
+              "x": 119.86,
+              "y": 6.8538
+            },
+            {
+              "x": 119.86,
+              "y": 6.6532
+            }
+          ],
+          "from": 28,
+          "to": 29
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 186.26,
+              "y": 2.4908
+            },
+            {
+              "x": 186.26,
+              "y": 2.3073
+            },
+            {
+              "x": 186.26,
+              "y": 2.0509
+            },
+            {
+              "x": 186.26,
+              "y": 1.844
+            }
+          ],
+          "from": 56,
+          "to": 57
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 196.4,
+              "y": 2.4908
+            },
+            {
+              "x": 196.4,
+              "y": 2.3073
+            },
+            {
+              "x": 196.4,
+              "y": 2.0509
+            },
+            {
+              "x": 196.4,
+              "y": 1.844
+            }
+          ],
+          "from": 65,
+          "to": 66
+        },
+        {
+          "actions": [
+            {
+              "channel": {
+                "name": "qout",
+                "type": "qubit"
+              },
+              "kind": "send",
+              "label": "t11 : qout!qb2",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11,
+              "value": "qb2"
+            }
+          ],
+          "bends": [
+            {
+              "x": 11.33,
+              "y": 1.2279
+            },
+            {
+              "x": 11.33,
+              "y": 1.053
+            },
+            {
+              "x": 11.33,
+              "y": 0.81224
+            },
+            {
+              "x": 11.33,
+              "y": 0.61508
+            }
+          ],
+          "from": 10,
+          "to": 11
+        },
+        {
+          "actions": [
+            {
+              "channel": {
+                "name": "qout",
+                "type": "qubit"
+              },
+              "kind": "send",
+              "label": "t11 : qout!qb2",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11,
+              "value": "qb2"
+            }
+          ],
+          "bends": [
+            {
+              "x": 103.29,
+              "y": 1.2279
+            },
+            {
+              "x": 103.29,
+              "y": 1.053
+            },
+            {
+              "x": 103.29,
+              "y": 0.81224
+            },
+            {
+              "x": 103.29,
+              "y": 0.61508
+            }
+          ],
+          "from": 32,
+          "to": 33
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t1, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 15,
+                  "line": 8
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 14,
+                  "line": 8
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 1
+            }
+          ],
+          "bends": [
+            {
+              "x": 66.839,
+              "y": 9.0218
+            },
+            {
+              "x": 68.095,
+              "y": 8.8025
+            },
+            {
+              "x": 69.565,
+              "y": 8.5457
+            },
+            {
+              "x": 70.834,
+              "y": 8.3242
+            }
+          ],
+          "from": 5,
+          "to": 26
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 193.4,
+              "y": 12.571
+            },
+            {
+              "x": 193.4,
+              "y": 12.327
+            },
+            {
+              "x": 193.4,
+              "y": 11.945
+            },
+            {
+              "x": 193.4,
+              "y": 11.665
+            }
+          ],
+          "from": 50,
+          "to": 51
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t10 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 86,
+                  "line": 2
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 84,
+                  "line": 2
+                }
+              },
+              "tag": 10
+            }
+          ],
+          "bends": [
+            {
+              "x": 79.635,
+              "y": 16.297
+            },
+            {
+              "x": 79.635,
+              "y": 16.122
+            },
+            {
+              "x": 79.635,
+              "y": 15.882
+            },
+            {
+              "x": 79.635,
+              "y": 15.685
+            }
+          ],
+          "from": 0,
+          "to": 1
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t4, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 35,
+                  "line": 11
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 34,
+                  "line": 11
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 4
+            }
+          ],
+          "bends": [
+            {
+              "x": 115,
+              "y": 5.5073
+            },
+            {
+              "x": 112.88,
+              "y": 5.2856
+            },
+            {
+              "x": 110.39,
+              "y": 5.0257
+            },
+            {
+              "x": 108.25,
+              "y": 4.8027
+            }
+          ],
+          "from": 29,
+          "to": 30
+        },
+        {
+          "actions": [
+            {
+              "channel": {
+                "name": "qout",
+                "type": "qubit"
+              },
+              "kind": "send",
+              "label": "t90 : qout!qb2",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90,
+              "value": "qb2"
+            }
+          ],
+          "bends": [
+            {
+              "x": 201.36,
+              "y": 1.2279
+            },
+            {
+              "x": 201.36,
+              "y": 1.053
+            },
+            {
+              "x": 201.36,
+              "y": 0.81224
+            },
+            {
+              "x": 201.36,
+              "y": 0.61508
+            }
+          ],
+          "from": 70,
+          "to": 71
+        },
+        {
+          "actions": [
+            {
+              "channel": {
+                "name": "qout",
+                "type": "qubit"
+              },
+              "kind": "send",
+              "label": "t90 : qout!qb2",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90,
+              "value": "qb2"
+            }
+          ],
+          "bends": [
+            {
+              "x": 196.4,
+              "y": 1.2279
+            },
+            {
+              "x": 196.4,
+              "y": 1.053
+            },
+            {
+              "x": 196.4,
+              "y": 0.81224
+            },
+            {
+              "x": 196.4,
+              "y": 0.61508
+            }
+          ],
+          "from": 66,
+          "to": 67
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 126.29,
+              "y": 3.7533
+            },
+            {
+              "x": 126.29,
+              "y": 3.5545
+            },
+            {
+              "x": 126.29,
+              "y": 3.3298
+            },
+            {
+              "x": 126.29,
+              "y": 3.1442
+            }
+          ],
+          "from": 34,
+          "to": 35
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t10 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 86,
+                  "line": 2
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 84,
+                  "line": 2
+                }
+              },
+              "tag": 10
+            }
+          ],
+          "bends": [
+            {
+              "x": 79.635,
+              "y": 13.838
+            },
+            {
+              "x": 79.635,
+              "y": 13.666
+            },
+            {
+              "x": 79.635,
+              "y": 13.429
+            },
+            {
+              "x": 79.635,
+              "y": 13.229
+            }
+          ],
+          "from": 2,
+          "to": 3
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t4, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 35,
+                  "line": 11
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 34,
+                  "line": 11
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 4
+            }
+          ],
+          "bends": [
+            {
+              "x": 27.559,
+              "y": 5.5071
+            },
+            {
+              "x": 24.603,
+              "y": 5.2845
+            },
+            {
+              "x": 21.138,
+              "y": 5.0234
+            },
+            {
+              "x": 18.17,
+              "y": 4.7999
+            }
+          ],
+          "from": 7,
+          "to": 8
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t91 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 60,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 58,
+                  "line": 14
+                }
+              },
+              "tag": 91
+            }
+          ],
+          "bends": [
+            {
+              "x": 194.13,
+              "y": 7.5286
+            },
+            {
+              "x": 195.08,
+              "y": 7.2107
+            },
+            {
+              "x": 196.75,
+              "y": 6.6539
+            },
+            {
+              "x": 197.76,
+              "y": 6.3193
+            }
+          ],
+          "from": 53,
+          "to": 63
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t2, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 35,
+                  "line": 8
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 34,
+                  "line": 8
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 2
+            }
+          ],
+          "bends": [
+            {
+              "x": 48.253,
+              "y": 7.2643
+            },
+            {
+              "x": 45.715,
+              "y": 7.0421
+            },
+            {
+              "x": 42.74,
+              "y": 6.7816
+            },
+            {
+              "x": 40.189,
+              "y": 6.5583
+            }
+          ],
+          "from": 16,
+          "to": 7
+        },
+        {
+          "actions": [
+            {
+              "channel": {
+                "name": "qout",
+                "type": "qubit"
+              },
+              "kind": "send",
+              "label": "t11 : qout!qb2",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11,
+              "value": "qb2"
+            }
+          ],
+          "bends": [
+            {
+              "x": 34.288,
+              "y": 1.2279
+            },
+            {
+              "x": 34.288,
+              "y": 1.053
+            },
+            {
+              "x": 34.288,
+              "y": 0.81224
+            },
+            {
+              "x": 34.288,
+              "y": 0.61508
+            }
+          ],
+          "from": 14,
+          "to": 15
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 34.288,
+              "y": 2.4548
+            },
+            {
+              "x": 34.288,
+              "y": 2.2758
+            },
+            {
+              "x": 34.288,
+              "y": 2.0403
+            },
+            {
+              "x": 34.288,
+              "y": 1.8471
+            }
+          ],
+          "from": 13,
+          "to": 14
+        },
+        {
+          "actions": [
+            {
+              "channel": {
+                "name": "qout",
+                "type": "qubit"
+              },
+              "kind": "send",
+              "label": "t11 : qout!qb2",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11,
+              "value": "qb2"
+            }
+          ],
+          "bends": [
+            {
+              "x": 126.29,
+              "y": 1.2279
+            },
+            {
+              "x": 126.29,
+              "y": 1.053
+            },
+            {
+              "x": 126.29,
+              "y": 0.81224
+            },
+            {
+              "x": 126.29,
+              "y": 0.61508
+            }
+          ],
+          "from": 36,
+          "to": 37
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t10 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 86,
+                  "line": 2
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 84,
+                  "line": 2
+                }
+              },
+              "tag": 10
+            }
+          ],
+          "bends": [
+            {
+              "x": 79.635,
+              "y": 15.068
+            },
+            {
+              "x": 79.635,
+              "y": 14.893
+            },
+            {
+              "x": 79.635,
+              "y": 14.653
+            },
+            {
+              "x": 79.635,
+              "y": 14.455
+            }
+          ],
+          "from": 1,
+          "to": 2
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 57.288,
+              "y": 3.7533
+            },
+            {
+              "x": 57.288,
+              "y": 3.5545
+            },
+            {
+              "x": 57.288,
+              "y": 3.3298
+            },
+            {
+              "x": 57.288,
+              "y": 3.1442
+            }
+          ],
+          "from": 18,
+          "to": 19
+        },
+        {
+          "actions": [
+            {
+              "channel": {
+                "name": "qout",
+                "type": "qubit"
+              },
+              "kind": "send",
+              "label": "t11 : qout!qb2",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11,
+              "value": "qb2"
+            }
+          ],
+          "bends": [
+            {
+              "x": 149.29,
+              "y": 1.2279
+            },
+            {
+              "x": 149.29,
+              "y": 1.053
+            },
+            {
+              "x": 149.29,
+              "y": 0.81224
+            },
+            {
+              "x": 149.29,
+              "y": 0.61508
+            }
+          ],
+          "from": 41,
+          "to": 42
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 80.288,
+              "y": 2.4548
+            },
+            {
+              "x": 80.288,
+              "y": 2.2758
+            },
+            {
+              "x": 80.288,
+              "y": 2.0403
+            },
+            {
+              "x": 80.288,
+              "y": 1.8471
+            }
+          ],
+          "from": 23,
+          "to": 24
+        },
+        {
+          "actions": [
+            {
+              "channel": {
+                "name": "qout",
+                "type": "qubit"
+              },
+              "kind": "send",
+              "label": "t90 : qout!qb2",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90,
+              "value": "qb2"
+            }
+          ],
+          "bends": [
+            {
+              "x": 191.22,
+              "y": 1.2279
+            },
+            {
+              "x": 191.22,
+              "y": 1.053
+            },
+            {
+              "x": 191.22,
+              "y": 0.81224
+            },
+            {
+              "x": 191.22,
+              "y": 0.61508
+            }
+          ],
+          "from": 61,
+          "to": 62
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 193.4,
+              "y": 11.044
+            },
+            {
+              "x": 193.4,
+              "y": 10.749
+            },
+            {
+              "x": 193.4,
+              "y": 10.245
+            },
+            {
+              "x": 193.4,
+              "y": 9.9062
+            }
+          ],
+          "from": 51,
+          "to": 52
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t93 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 84,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 82,
+                  "line": 14
+                }
+              },
+              "tag": 93
+            }
+          ],
+          "bends": [
+            {
+              "x": 198.98,
+              "y": 5.7735
+            },
+            {
+              "x": 199.47,
+              "y": 5.4633
+            },
+            {
+              "x": 200.34,
+              "y": 4.9238
+            },
+            {
+              "x": 200.88,
+              "y": 4.5864
+            }
+          ],
+          "from": 63,
+          "to": 68
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 172.29,
+              "y": 2.4548
+            },
+            {
+              "x": 172.29,
+              "y": 2.2758
+            },
+            {
+              "x": 172.29,
+              "y": 2.0403
+            },
+            {
+              "x": 172.29,
+              "y": 1.8471
+            }
+          ],
+          "from": 44,
+          "to": 45
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 11.33,
+              "y": 3.7533
+            },
+            {
+              "x": 11.33,
+              "y": 3.5545
+            },
+            {
+              "x": 11.33,
+              "y": 3.3298
+            },
+            {
+              "x": 11.33,
+              "y": 3.1442
+            }
+          ],
+          "from": 8,
+          "to": 9
+        },
+        {
+          "actions": [
+            {
+              "channel": {
+                "name": "qout",
+                "type": "qubit"
+              },
+              "kind": "send",
+              "label": "t11 : qout!qb2",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11,
+              "value": "qb2"
+            }
+          ],
+          "bends": [
+            {
+              "x": 80.288,
+              "y": 1.2279
+            },
+            {
+              "x": 80.288,
+              "y": 1.053
+            },
+            {
+              "x": 80.288,
+              "y": 0.81224
+            },
+            {
+              "x": 80.288,
+              "y": 0.61508
+            }
+          ],
+          "from": 24,
+          "to": 25
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 201.36,
+              "y": 2.4908
+            },
+            {
+              "x": 201.36,
+              "y": 2.3073
+            },
+            {
+              "x": 201.36,
+              "y": 2.0509
+            },
+            {
+              "x": 201.36,
+              "y": 1.844
+            }
+          ],
+          "from": 69,
+          "to": 70
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 11.33,
+              "y": 2.4548
+            },
+            {
+              "x": 11.33,
+              "y": 2.2758
+            },
+            {
+              "x": 11.33,
+              "y": 2.0403
+            },
+            {
+              "x": 11.33,
+              "y": 1.8471
+            }
+          ],
+          "from": 9,
+          "to": 10
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t10, t13) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 86,
+                  "line": 2
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 84,
+                  "line": 2
+                }
+              },
+              "recvTag": 13,
+              "sendTag": 10
+            }
+          ],
+          "bends": [
+            {
+              "x": 85.735,
+              "y": 10.854
+            },
+            {
+              "x": 89.312,
+              "y": 10.601
+            },
+            {
+              "x": 93.833,
+              "y": 10.282
+            },
+            {
+              "x": 97.497,
+              "y": 10.023
+            }
+          ],
+          "from": 4,
+          "to": 27
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 57.288,
+              "y": 2.4548
+            },
+            {
+              "x": 57.288,
+              "y": 2.2758
+            },
+            {
+              "x": 57.288,
+              "y": 2.0403
+            },
+            {
+              "x": 57.288,
+              "y": 1.8471
+            }
+          ],
+          "from": 19,
+          "to": 20
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 172.29,
+              "y": 3.7533
+            },
+            {
+              "x": 172.29,
+              "y": 3.5545
+            },
+            {
+              "x": 172.29,
+              "y": 3.3298
+            },
+            {
+              "x": 172.29,
+              "y": 3.1442
+            }
+          ],
+          "from": 43,
+          "to": 44
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 186.26,
+              "y": 4.0159
+            },
+            {
+              "x": 186.26,
+              "y": 3.771
+            },
+            {
+              "x": 186.26,
+              "y": 3.389
+            },
+            {
+              "x": 186.26,
+              "y": 3.1099
+            }
+          ],
+          "from": 55,
+          "to": 56
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t3, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 15,
+                  "line": 11
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 14,
+                  "line": 11
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 3
+            }
+          ],
+          "bends": [
+            {
+              "x": 121.74,
+              "y": 5.5079
+            },
+            {
+              "x": 122.54,
+              "y": 5.2919
+            },
+            {
+              "x": 123.48,
+              "y": 5.0395
+            },
+            {
+              "x": 124.3,
+              "y": 4.8203
+            }
+          ],
+          "from": 29,
+          "to": 34
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t94 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 96,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 94,
+                  "line": 14
+                }
+              },
+              "tag": 94
+            }
+          ],
+          "bends": [
+            {
+              "x": 187.95,
+              "y": 5.7735
+            },
+            {
+              "x": 187.6,
+              "y": 5.4663
+            },
+            {
+              "x": 187,
+              "y": 4.9342
+            },
+            {
+              "x": 186.61,
+              "y": 4.5963
+            }
+          ],
+          "from": 54,
+          "to": 55
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 193.4,
+              "y": 15.068
+            },
+            {
+              "x": 193.4,
+              "y": 14.893
+            },
+            {
+              "x": 193.4,
+              "y": 14.653
+            },
+            {
+              "x": 193.4,
+              "y": 14.455
+            }
+          ],
+          "from": 48,
+          "to": 49
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t1, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 15,
+                  "line": 8
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 14,
+                  "line": 8
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 1
+            }
+          ],
+          "bends": [
+            {
+              "x": 126.68,
+              "y": 7.3698
+            },
+            {
+              "x": 130.81,
+              "y": 7.1271
+            },
+            {
+              "x": 136.12,
+              "y": 6.8153
+            },
+            {
+              "x": 140.55,
+              "y": 6.5548
+            }
+          ],
+          "from": 28,
+          "to": 38
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t10, t12) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 86,
+                  "line": 2
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 84,
+                  "line": 2
+                }
+              },
+              "recvTag": 12,
+              "sendTag": 10
+            }
+          ],
+          "bends": [
+            {
+              "x": 108.73,
+              "y": 9.0212
+            },
+            {
+              "x": 110.75,
+              "y": 8.7997
+            },
+            {
+              "x": 113.11,
+              "y": 8.5401
+            },
+            {
+              "x": 115.14,
+              "y": 8.3172
+            }
+          ],
+          "from": 27,
+          "to": 28
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t2, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 35,
+                  "line": 8
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 34,
+                  "line": 8
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 2
+            }
+          ],
+          "bends": [
+            {
+              "x": 57.53,
+              "y": 9.1539
+            },
+            {
+              "x": 53.308,
+              "y": 8.9077
+            },
+            {
+              "x": 47.725,
+              "y": 8.5822
+            },
+            {
+              "x": 43.089,
+              "y": 8.3118
+            }
+          ],
+          "from": 5,
+          "to": 6
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t10, t13) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 86,
+                  "line": 2
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 84,
+                  "line": 2
+                }
+              },
+              "recvTag": 13,
+              "sendTag": 10
+            }
+          ],
+          "bends": [
+            {
+              "x": 71.832,
+              "y": 7.2649
+            },
+            {
+              "x": 70.97,
+              "y": 7.0479
+            },
+            {
+              "x": 69.962,
+              "y": 6.7944
+            },
+            {
+              "x": 69.088,
+              "y": 6.5746
+            }
+          ],
+          "from": 26,
+          "to": 17
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau2",
+              "label": "(t3, t11) : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 15,
+                  "line": 11
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 14,
+                  "line": 11
+                }
+              },
+              "recvTag": 11,
+              "sendTag": 3
+            }
+          ],
+          "bends": [
+            {
+              "x": 34.288,
+              "y": 5.5091
+            },
+            {
+              "x": 34.288,
+              "y": 5.3173
+            },
+            {
+              "x": 34.288,
+              "y": 5.0968
+            },
+            {
+              "x": 34.288,
+              "y": 4.8962
+            }
+          ],
+          "from": 7,
+          "to": 12
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t93 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 84,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 82,
+                  "line": 14
+                }
+              },
+              "tag": 93
+            }
+          ],
+          "bends": [
+            {
+              "x": 188.64,
+              "y": 5.7735
+            },
+            {
+              "x": 189.18,
+              "y": 5.462
+            },
+            {
+              "x": 190.12,
+              "y": 4.9193
+            },
+            {
+              "x": 190.7,
+              "y": 4.5822
+            }
+          ],
+          "from": 54,
+          "to": 59
+        },
+        {
+          "actions": [
+            {
+              "channel": {
+                "name": "qout",
+                "type": "qubit"
+              },
+              "kind": "send",
+              "label": "t11 : qout!qb2",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11,
+              "value": "qb2"
+            }
+          ],
+          "bends": [
+            {
+              "x": 57.288,
+              "y": 1.2279
+            },
+            {
+              "x": 57.288,
+              "y": 1.053
+            },
+            {
+              "x": 57.288,
+              "y": 0.81224
+            },
+            {
+              "x": 57.288,
+              "y": 0.61508
+            }
+          ],
+          "from": 20,
+          "to": 21
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 193.4,
+              "y": 9.2873
+            },
+            {
+              "x": 193.4,
+              "y": 8.9918
+            },
+            {
+              "x": 193.4,
+              "y": 8.488
+            },
+            {
+              "x": 193.4,
+              "y": 8.1493
+            }
+          ],
+          "from": 52,
+          "to": 53
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t90 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90
+            }
+          ],
+          "bends": [
+            {
+              "x": 196.4,
+              "y": 4.0159
+            },
+            {
+              "x": 196.4,
+              "y": 3.771
+            },
+            {
+              "x": 196.4,
+              "y": 3.389
+            },
+            {
+              "x": 196.4,
+              "y": 3.1099
+            }
+          ],
+          "from": 64,
+          "to": 65
+        },
+        {
+          "actions": [
+            {
+              "channel": {
+                "name": "qout",
+                "type": "qubit"
+              },
+              "kind": "send",
+              "label": "t90 : qout!qb2",
+              "loc": {
+                "end": {
+                  "col": 123,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 121,
+                  "line": 14
+                }
+              },
+              "tag": 90,
+              "value": "qb2"
+            }
+          ],
+          "bends": [
+            {
+              "x": 186.26,
+              "y": 1.2279
+            },
+            {
+              "x": 186.26,
+              "y": 1.053
+            },
+            {
+              "x": 186.26,
+              "y": 0.81224
+            },
+            {
+              "x": 186.26,
+              "y": 0.61508
+            }
+          ],
+          "from": 57,
+          "to": 58
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t11 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 103,
+                  "line": 5
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 101,
+                  "line": 5
+                }
+              },
+              "tag": 11
+            }
+          ],
+          "bends": [
+            {
+              "x": 103.29,
+              "y": 3.7533
+            },
+            {
+              "x": 103.29,
+              "y": 3.5545
+            },
+            {
+              "x": 103.29,
+              "y": 3.3298
+            },
+            {
+              "x": 103.29,
+              "y": 3.1442
+            }
+          ],
+          "from": 30,
+          "to": 31
+        },
+        {
+          "actions": [
+            {
+              "kind": "tau",
+              "label": "t94 : \u03c4",
+              "loc": {
+                "end": {
+                  "col": 96,
+                  "line": 14
+                },
+                "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+                "start": {
+                  "col": 94,
+                  "line": 14
+                }
+              },
+              "tag": 94
+            }
+          ],
+          "bends": [
+            {
+              "x": 198.29,
+              "y": 5.7735
+            },
+            {
+              "x": 197.9,
+              "y": 5.4659
+            },
+            {
+              "x": 197.22,
+              "y": 4.9327
+            },
+            {
+              "x": 196.79,
+              "y": 4.5949
+            }
+          ],
+          "from": 63,
+          "to": 64
+        }
+      ],
+      "initial": [
+        47,
+        0
+      ],
+      "noFreeInputs": true,
+      "nodes": [
+        {
+          "branches": 1,
+          "classId": 26,
+          "dim": 8,
+          "id": 64,
+          "loc": {
+            "end": {
+              "col": 111,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 105,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 1,
+          "classId": 30,
+          "dim": 8,
+          "id": 68,
+          "loc": {
+            "end": {
+              "col": 111,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 105,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 1,
+          "classId": 10,
+          "dim": 8,
+          "id": 14,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) || (t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 9,
+          "dim": 8,
+          "id": 70,
+          "loc": {
+            "end": {
+              "col": 130,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 121,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 4,
+          "classId": 24,
+          "dim": 8,
+          "id": 27,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc(qb1)) || (t10 : c1!(0).disc(qb0)) || ((t3 : d2!(0).disc() + t4 : d2!(1 - 0).disc())) || (@Charlie$0(c1, c2)) || (@Bob$0[qb2](c2, d2, qout)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 0,
+          "dim": 8,
+          "id": 21,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 2,
+          "classId": 14,
+          "dim": 8,
+          "id": 19,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) || (if 0 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 1,
+          "dim": 8,
+          "id": 58,
+          "loc": {
+            "end": {
+              "col": 142,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 132,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "disc(qb0, qb1)"
+        },
+        {
+          "branches": 1,
+          "classId": 10,
+          "dim": 8,
+          "id": 36,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) || (t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 4,
+          "classId": 31,
+          "dim": 8,
+          "id": 12,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) || (if 0 = 0 then t11 : I(qb2).if 1 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if 1 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 4,
+          "classId": 13,
+          "dim": 8,
+          "id": 28,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc(qb0)) || (disc(qb1)) || ((t1 : c2!(1).disc() + t2 : c2!(1 - 1).disc())) || ((t3 : d2!(1).disc() + t4 : d2!(1 - 1).disc())) || (@Bob$0[qb2](c2, d2, qout)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 4,
+          "classId": 34,
+          "dim": 8,
+          "id": 17,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc(qb1)) || (disc(qb0)) || (t11 : d2?x.if 1 = 0 then t11 : I(qb2).if x = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if x = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) || ((t3 : d2!(0).disc() + t4 : d2!(1 - 0).disc())) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 2,
+          "classId": 18,
+          "dim": 8,
+          "id": 44,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) || (if 1 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 4,
+          "classId": 12,
+          "dim": 8,
+          "id": 5,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc(qb0)) || (t10 : d1!(0).disc(qb1)) || ((t1 : c2!(1).disc() + t2 : c2!(1 - 1).disc())) || (@Bob$0[qb2](c2, d2, qout)) || (@David$0(d1, d2)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 21,
+          "dim": 8,
+          "id": 60,
+          "loc": {
+            "end": {
+              "col": 119,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 113,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 1,
+          "classId": 2,
+          "dim": 8,
+          "id": 25,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 2,
+          "classId": 16,
+          "dim": 8,
+          "id": 31,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) || (if 1 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 17,
+          "dim": 8,
+          "id": 56,
+          "loc": {
+            "end": {
+              "col": 119,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 113,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 4,
+          "classId": 13,
+          "dim": 8,
+          "id": 16,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc(qb1)) || (disc(qb0)) || ((t1 : c2!(1).disc() + t2 : c2!(1 - 1).disc())) || ((t3 : d2!(0).disc() + t4 : d2!(1 - 0).disc())) || (@Bob$0[qb2](c2, d2, qout)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 4,
+          "classId": 31,
+          "dim": 8,
+          "id": 34,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) || (if 1 = 0 then t11 : I(qb2).if 0 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if 0 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 4,
+          "classId": 25,
+          "dim": 8,
+          "id": 39,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) || (if 1 = 0 then t11 : I(qb2).if 0 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if 0 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 46,
+          "dim": 8,
+          "id": 49,
+          "loc": {
+            "end": {
+              "col": 31,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 25,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : \u03c4.t90 : \u03c4.t90 : \u03c4.t90 : \u03c4.t91 : I(qb2).t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t92 : Z(qb2).t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 4,
+          "classId": 25,
+          "dim": 8,
+          "id": 18,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) || (if 0 = 0 then t11 : I(qb2).if 1 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if 1 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 8,
+          "dim": 8,
+          "id": 45,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) || (t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 8,
+          "dim": 8,
+          "id": 24,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) || (t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 1,
+          "dim": 8,
+          "id": 33,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 33,
+          "dim": 8,
+          "id": 2,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(t10 : M01(qb0 > z).t10 : M01(qb1 > x).(t10 : c1!(z).disc(qb0)) || (t10 : d1!(x).disc(qb1))) || (@Charlie$0(c1, c2)) || (@Bob$0[qb2](c2, d2, qout)) || (@David$0(d1, d2)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 5,
+          "dim": 8,
+          "id": 66,
+          "loc": {
+            "end": {
+              "col": 130,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 121,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 4,
+          "classId": 36,
+          "dim": 8,
+          "id": 7,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc(qb1)) || (disc(qb0)) || (t11 : d2?x.if 1 = 0 then t11 : I(qb2).if x = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if x = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) || ((t3 : d2!(0).disc() + t4 : d2!(1 - 0).disc())) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 35,
+          "dim": 8,
+          "id": 63,
+          "loc": {
+            "end": {
+              "col": 102,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 81,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 1,
+          "classId": 40,
+          "dim": 8,
+          "id": 53,
+          "loc": {
+            "end": {
+              "col": 78,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 57,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t91 : I(qb2).t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t92 : Z(qb2).t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 1,
+          "classId": 4,
+          "dim": 8,
+          "id": 20,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) || (t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 2,
+          "classId": 20,
+          "dim": 8,
+          "id": 35,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) || (if 1 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 15,
+          "dim": 8,
+          "id": 65,
+          "loc": {
+            "end": {
+              "col": 119,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 113,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 2,
+          "classId": 16,
+          "dim": 8,
+          "id": 9,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) || (if 0 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 4,
+          "classId": 27,
+          "dim": 8,
+          "id": 30,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) || (if 1 = 0 then t11 : I(qb2).if 0 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if 0 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 0,
+          "dim": 8,
+          "id": 42,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 4,
+          "classId": 34,
+          "dim": 8,
+          "id": 38,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc(qb0)) || (disc(qb1)) || (t11 : d2?x.if 0 = 0 then t11 : I(qb2).if x = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if x = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) || ((t3 : d2!(1).disc() + t4 : d2!(1 - 1).disc())) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 3,
+          "dim": 8,
+          "id": 15,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 28,
+          "dim": 8,
+          "id": 55,
+          "loc": {
+            "end": {
+              "col": 111,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 105,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 4,
+          "classId": 29,
+          "dim": 8,
+          "id": 43,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) || (if 1 = 0 then t11 : I(qb2).if 0 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if 0 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 44,
+          "dim": 8,
+          "id": 51,
+          "loc": {
+            "end": {
+              "col": 47,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 41,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : \u03c4.t90 : \u03c4.t91 : I(qb2).t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t92 : Z(qb2).t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 1,
+          "classId": 11,
+          "dim": 8,
+          "id": 61,
+          "loc": {
+            "end": {
+              "col": 130,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 121,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 4,
+          "classId": 36,
+          "dim": 8,
+          "id": 29,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc(qb0)) || (disc(qb1)) || (t11 : d2?x.if 0 = 0 then t11 : I(qb2).if x = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if x = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) || ((t3 : d2!(1).disc() + t4 : d2!(1 - 1).disc())) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 43,
+          "dim": 8,
+          "id": 52,
+          "loc": {
+            "end": {
+              "col": 55,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 49,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : \u03c4.t91 : I(qb2).t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t92 : Z(qb2).t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 1,
+          "classId": 2,
+          "dim": 8,
+          "id": 46,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 6,
+          "dim": 8,
+          "id": 32,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) || (t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 37,
+          "dim": 8,
+          "id": 54,
+          "loc": {
+            "end": {
+              "col": 102,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 81,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 1,
+          "classId": 3,
+          "dim": 8,
+          "id": 37,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 32,
+          "dim": 8,
+          "id": 59,
+          "loc": {
+            "end": {
+              "col": 111,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 105,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 4,
+          "classId": 27,
+          "dim": 8,
+          "id": 8,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) || (if 0 = 0 then t11 : I(qb2).if 1 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if 1 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 45,
+          "dim": 8,
+          "id": 50,
+          "loc": {
+            "end": {
+              "col": 39,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 33,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : \u03c4.t90 : \u03c4.t90 : \u03c4.t91 : I(qb2).t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t92 : Z(qb2).t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 2,
+          "classId": 22,
+          "dim": 8,
+          "id": 3,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(t10 : M01(qb1 > x).(t10 : c1!(1).disc(qb0)) || (t10 : d1!(x).disc(qb1))) || (@Charlie$0(c1, c2)) || (@Bob$0[qb2](c2, d2, qout)) || (@David$0(d1, d2)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 2,
+          "classId": 20,
+          "dim": 8,
+          "id": 13,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) || (if 0 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 3,
+          "dim": 8,
+          "id": 62,
+          "loc": {
+            "end": {
+              "col": 142,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 132,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "disc(qb0, qb1)"
+        },
+        {
+          "branches": 4,
+          "classId": 29,
+          "dim": 8,
+          "id": 22,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) || (if 0 = 0 then t11 : I(qb2).if 1 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if 1 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 47,
+          "dim": 8,
+          "id": 48,
+          "loc": {
+            "end": {
+              "col": 23,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 17,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : \u03c4.t90 : \u03c4.t90 : \u03c4.t90 : \u03c4.t90 : \u03c4.t91 : I(qb2).t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t92 : Z(qb2).t93 : I(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1) + t94 : X(qb2).t90 : \u03c4.t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 1,
+          "classId": 42,
+          "dim": 8,
+          "id": 0,
+          "initial": true,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(@Bob$0[qb2](c2, d2, qout)) || (@Charlie$0(c1, c2)) || (@David$0(d1, d2)) || (@Alice$0[qb0, qb1](c1, d1)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 38,
+          "dim": 8,
+          "id": 1,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(t10 : H(qb0).t10 : M01(qb0 > z).t10 : M01(qb1 > x).(t10 : c1!(z).disc(qb0)) || (t10 : d1!(x).disc(qb1))) || (@Charlie$0(c1, c2)) || (@Bob$0[qb2](c2, d2, qout)) || (@David$0(d1, d2)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 2,
+          "classId": 18,
+          "dim": 8,
+          "id": 23,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) || (if 0 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 19,
+          "dim": 8,
+          "id": 69,
+          "loc": {
+            "end": {
+              "col": 119,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 113,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : \u03c4.t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 1,
+          "classId": 48,
+          "dim": 8,
+          "id": 47,
+          "initial": true,
+          "loc": {
+            "end": {
+              "col": 15,
+              "line": 34
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 11,
+              "line": 34
+            }
+          },
+          "origin": 0,
+          "procShort": "@Spec$1[qb0, qb1, qb2](qout)"
+        },
+        {
+          "branches": 1,
+          "classId": 0,
+          "dim": 8,
+          "id": 67,
+          "loc": {
+            "end": {
+              "col": 142,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 132,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "disc(qb0, qb1)"
+        },
+        {
+          "branches": 1,
+          "classId": 6,
+          "dim": 8,
+          "id": 10,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) || (t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 4,
+          "classId": 23,
+          "dim": 8,
+          "id": 4,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(t10 : d1!(1).disc(qb1)) || (t10 : c1!(0).disc(qb0)) || (@Charlie$0(c1, c2)) || (@Bob$0[qb2](c2, d2, qout)) || (@David$0(d1, d2)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 4,
+          "classId": 41,
+          "dim": 8,
+          "id": 6,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc(qb0)) || (t10 : d1!(0).disc(qb1)) || (t11 : d2?x.if 0 = 0 then t11 : I(qb2).if x = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if x = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) || (@David$0(d1, d2)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 1,
+          "dim": 8,
+          "id": 11,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc()) || (disc(qb1)) || (disc(qb0)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 4,
+          "dim": 8,
+          "id": 41,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) || (t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 7,
+          "dim": 8,
+          "id": 57,
+          "loc": {
+            "end": {
+              "col": 130,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 121,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "t90 : qout!(qb2).disc(qb0, qb1)"
+        },
+        {
+          "branches": 2,
+          "classId": 14,
+          "dim": 8,
+          "id": 40,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc()) || (disc(qb0)) || (disc(qb1)) || (if 1 = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 4,
+          "classId": 39,
+          "dim": 8,
+          "id": 26,
+          "loc": {
+            "end": {
+              "col": 123,
+              "line": 29
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 13,
+              "line": 29
+            }
+          },
+          "origin": 1,
+          "procShort": "(disc()) || (disc(qb0)) || (t10 : d1!(0).disc(qb1)) || (t11 : d2?x.if 0 = 0 then t11 : I(qb2).if x = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc() else t11 : Z(qb2).if x = 0 then t11 : I(qb2).t11 : qout!(qb2).disc() else t11 : X(qb2).t11 : qout!(qb2).disc()) || (@David$0(d1, d2)) \\ c1 \\ c2 \\ d1 \\ d2"
+        },
+        {
+          "branches": 1,
+          "classId": 2,
+          "dim": 8,
+          "id": 71,
+          "loc": {
+            "end": {
+              "col": 142,
+              "line": 14
+            },
+            "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+            "start": {
+              "col": 132,
+              "line": 14
+            }
+          },
+          "origin": 0,
+          "procShort": "disc(qb0, qb1)"
+        }
+      ]
+    },
+    "kind": "equiv",
+    "pos": {
+      "0": [
+        79.635,
+        16.549
+      ],
+      "1": [
+        79.635,
+        15.319
+      ],
+      "10": [
+        11.33,
+        1.4792
+      ],
+      "11": [
+        11.33,
+        0.25
+      ],
+      "12": [
+        34.288,
+        4.2708
+      ],
+      "13": [
+        34.288,
+        2.7431
+      ],
+      "14": [
+        34.288,
+        1.4792
+      ],
+      "15": [
+        34.288,
+        0.25
+      ],
+      "16": [
+        54.038,
+        7.7847
+      ],
+      "17": [
+        66.969,
+        6.0278
+      ],
+      "18": [
+        57.288,
+        4.2708
+      ],
+      "19": [
+        57.288,
+        2.7431
+      ],
+      "2": [
+        79.635,
+        14.09
+      ],
+      "20": [
+        57.288,
+        1.4792
+      ],
+      "21": [
+        57.288,
+        0.25
+      ],
+      "22": [
+        80.288,
+        4.2708
+      ],
+      "23": [
+        80.288,
+        2.7431
+      ],
+      "24": [
+        80.288,
+        1.4792
+      ],
+      "25": [
+        80.288,
+        0.25
+      ],
+      "26": [
+        73.844,
+        7.7847
+      ],
+      "27": [
+        104.12,
+        9.5417
+      ],
+      "28": [
+        119.86,
+        7.7847
+      ],
+      "29": [
+        119.86,
+        6.0278
+      ],
+      "3": [
+        79.635,
+        12.826
+      ],
+      "30": [
+        103.29,
+        4.2708
+      ],
+      "31": [
+        103.29,
+        2.7431
+      ],
+      "32": [
+        103.29,
+        1.4792
+      ],
+      "33": [
+        103.29,
+        0.25
+      ],
+      "34": [
+        126.29,
+        4.2708
+      ],
+      "35": [
+        126.29,
+        2.7431
+      ],
+      "36": [
+        126.29,
+        1.4792
+      ],
+      "37": [
+        126.29,
+        0.25
+      ],
+      "38": [
+        149.29,
+        6.0278
+      ],
+      "39": [
+        149.29,
+        4.2708
+      ],
+      "4": [
+        79.635,
+        11.299
+      ],
+      "40": [
+        149.29,
+        2.7431
+      ],
+      "41": [
+        149.29,
+        1.4792
+      ],
+      "42": [
+        149.29,
+        0.25
+      ],
+      "43": [
+        172.29,
+        4.2708
+      ],
+      "44": [
+        172.29,
+        2.7431
+      ],
+      "45": [
+        172.29,
+        1.4792
+      ],
+      "46": [
+        172.29,
+        0.25
+      ],
+      "47": [
+        193.4,
+        16.549
+      ],
+      "48": [
+        193.4,
+        15.319
+      ],
+      "49": [
+        193.4,
+        14.09
+      ],
+      "5": [
+        63.941,
+        9.5417
+      ],
+      "50": [
+        193.4,
+        12.826
+      ],
+      "51": [
+        193.4,
+        11.299
+      ],
+      "52": [
+        193.4,
+        9.5417
+      ],
+      "53": [
+        193.4,
+        7.7847
+      ],
+      "54": [
+        188.22,
+        6.0278
+      ],
+      "55": [
+        186.26,
+        4.2708
+      ],
+      "56": [
+        186.26,
+        2.7431
+      ],
+      "57": [
+        186.26,
+        1.4792
+      ],
+      "58": [
+        186.26,
+        0.25
+      ],
+      "59": [
+        191.22,
+        4.2708
+      ],
+      "6": [
+        34.288,
+        7.7847
+      ],
+      "60": [
+        191.22,
+        2.7431
+      ],
+      "61": [
+        191.22,
+        1.4792
+      ],
+      "62": [
+        191.22,
+        0.25
+      ],
+      "63": [
+        198.59,
+        6.0278
+      ],
+      "64": [
+        196.4,
+        4.2708
+      ],
+      "65": [
+        196.4,
+        2.7431
+      ],
+      "66": [
+        196.4,
+        1.4792
+      ],
+      "67": [
+        196.4,
+        0.25
+      ],
+      "68": [
+        201.36,
+        4.2708
+      ],
+      "69": [
+        201.36,
+        2.7431
+      ],
+      "7": [
+        34.288,
+        6.0278
+      ],
+      "70": [
+        201.36,
+        1.4792
+      ],
+      "71": [
+        201.36,
+        0.25
+      ],
+      "8": [
+        11.33,
+        4.2708
+      ],
+      "9": [
+        11.33,
+        2.7431
+      ]
+    },
+    "schema": "quarc.lts/1",
+    "tauTags": [
+      {
+        "loc": {
+          "end": {
+            "col": 86,
+            "line": 2
+          },
+          "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+          "start": {
+            "col": 84,
+            "line": 2
+          }
+        },
+        "norm": 10,
+        "silent": true,
+        "tag": 10
+      },
+      {
+        "loc": {
+          "end": {
+            "col": 103,
+            "line": 5
+          },
+          "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+          "start": {
+            "col": 101,
+            "line": 5
+          }
+        },
+        "norm": 11,
+        "silent": true,
+        "tag": 11
+      },
+      {
+        "loc": {
+          "end": {
+            "col": 123,
+            "line": 14
+          },
+          "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+          "start": {
+            "col": 121,
+            "line": 14
+          }
+        },
+        "norm": 90,
+        "silent": true,
+        "tag": 90
+      },
+      {
+        "loc": {
+          "end": {
+            "col": 60,
+            "line": 14
+          },
+          "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+          "start": {
+            "col": 58,
+            "line": 14
+          }
+        },
+        "norm": 91,
+        "silent": true,
+        "tag": 91
+      },
+      {
+        "loc": {
+          "end": {
+            "col": 72,
+            "line": 14
+          },
+          "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+          "start": {
+            "col": 70,
+            "line": 14
+          }
+        },
+        "norm": 92,
+        "silent": true,
+        "tag": 92
+      },
+      {
+        "loc": {
+          "end": {
+            "col": 84,
+            "line": 14
+          },
+          "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+          "start": {
+            "col": 82,
+            "line": 14
+          }
+        },
+        "norm": 93,
+        "silent": true,
+        "tag": 93
+      },
+      {
+        "loc": {
+          "end": {
+            "col": 96,
+            "line": 14
+          },
+          "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+          "start": {
+            "col": 94,
+            "line": 14
+          }
+        },
+        "norm": 94,
+        "silent": true,
+        "tag": 94
+      },
+      {
+        "loc": {
+          "end": {
+            "col": 15,
+            "line": 8
+          },
+          "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+          "start": {
+            "col": 14,
+            "line": 8
+          }
+        },
+        "norm": [
+          1,
+          11
+        ],
+        "silent": true,
+        "tag": [
+          1,
+          11
+        ]
+      },
+      {
+        "loc": {
+          "end": {
+            "col": 35,
+            "line": 8
+          },
+          "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+          "start": {
+            "col": 34,
+            "line": 8
+          }
+        },
+        "norm": [
+          2,
+          11
+        ],
+        "silent": true,
+        "tag": [
+          2,
+          11
+        ]
+      },
+      {
+        "loc": {
+          "end": {
+            "col": 15,
+            "line": 11
+          },
+          "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+          "start": {
+            "col": 14,
+            "line": 11
+          }
+        },
+        "norm": [
+          3,
+          11
+        ],
+        "silent": true,
+        "tag": [
+          3,
+          11
+        ]
+      },
+      {
+        "loc": {
+          "end": {
+            "col": 35,
+            "line": 11
+          },
+          "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+          "start": {
+            "col": 34,
+            "line": 11
+          }
+        },
+        "norm": [
+          4,
+          11
+        ],
+        "silent": true,
+        "tag": [
+          4,
+          11
+        ]
+      },
+      {
+        "loc": {
+          "end": {
+            "col": 86,
+            "line": 2
+          },
+          "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+          "start": {
+            "col": 84,
+            "line": 2
+          }
+        },
+        "norm": [
+          10,
+          12
+        ],
+        "silent": true,
+        "tag": [
+          10,
+          12
+        ]
+      },
+      {
+        "loc": {
+          "end": {
+            "col": 86,
+            "line": 2
+          },
+          "file": "/home/shinkage/Programming/quarc/test_procs/sefm26/teleport.quarc",
+          "start": {
+            "col": 84,
+            "line": 2
+          }
+        },
+        "norm": [
+          10,
+          13
+        ],
+        "silent": true,
+        "tag": [
+          10,
+          13
+        ]
+      }
+    ]
+  },
+  "handle": 0
+}

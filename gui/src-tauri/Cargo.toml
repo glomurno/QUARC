@@ -1,0 +1,21 @@
+[package]
+name = "quarc-gui"
+version = "0.1.0"
+description = "QUARC LTS Workbench"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "=2.6.3", features = [] }
+
+[dependencies]
+tauri = { version = "=2.11.3", features = [] }
+tauri-plugin-shell = "=2.3.5"
+tauri-plugin-dialog = "=2.7.1"
+serde = { version = "=1.0.228", features = ["derive"] }
+serde_json = "=1.0.150"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true

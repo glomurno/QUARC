@@ -1,0 +1,145 @@
+proc Bob(atob: chan qubit, guess: chan bit, witness: chan bit, secret: chan bit, b: chan bool, cheat: chan bool) :=
+  atob?x.
+  MRandBit(> bv).
+  (if bv = 0 then MH(x > p) else M01(x > p)).
+  guess!bv.
+  witness?w.
+  secret?s.
+  ((b!bv = s.disc()) || (cheat!(!(bv = s) /\ !(p = w)).disc()) || disc(x))
+
+proc BobND(atob: chan qubit, guess: chan bit, witness: chan bit, secret: chan bit, b: chan bool, cheat: chan bool, bv: bit) :=
+  atob?x.
+  (if bv = 0 then MH(x > p) else M01(x > p)).
+  guess!bv.
+  witness?w.
+  secret?s.
+  ((b!bv = s.disc()) || (cheat!(!(bv = s) /\ !(p = w)).disc()) || disc(x))
+
+proc Alice[q](atob: chan qubit, guess: chan bit, witness: chan bit, secret: chan bit, a: chan bool) :=
+  MRandBit(> s).
+  (if s = 0 then H(q).M01(q > w) else I(q).MH(q > w)).
+  atob!q.
+  guess?g.
+  witness!w.
+  secret!s.
+  a!g = s.
+  disc()
+
+proc AliceND[q](atob: chan qubit, guess: chan bit, witness: chan bit, secret: chan bit, a: chan bool, s: bit) :=
+  (if s = 0 then H(q).M01(q > w) else I(q).MH(q > w)).
+  atob!q.
+  guess?g.
+  witness!w.
+  secret!s.
+  a!g = s.
+  disc()
+
+proc Bob5(atob: chan qubit, guess: chan bit, witness: chan bit, secret: chan bit, b: chan bool, cheat: chan bool) :=
+  atob?x1.atob?x2.atob?x3.atob?x4.atob?x5.
+  MRandBit(> bv).
+  (if bv = 0 then MH(x1 > p1).MH(x2 > p2).MH(x3 > p3).MH(x4 > p4).MH(x5 > p5)
+     else M01(x1 > p1).M01(x2 > p2).M01(x3 > p3).M01(x4 > p4).M01(x5 > p5)).
+  guess!bv.
+  witness?w1.witness?w2.witness?w3.witness?w4.witness?w5.
+  secret?s.
+  ((b!bv = s.disc()) || (cheat!!(bv = s) /\ (!(p1 = w1) \/ !(p2 = w2) \/ !(p3 = w3) \/ !(p4 = w4) \/ !(p4 = w4)).disc()) || disc(x1, x2, x3, x4, x5))
+
+proc Alice5[q1,q2,q3,q4,q5](atob: chan qubit, guess: chan bit, witness: chan bit, secret: chan bit, a: chan bool) :=
+  MRandBit(> s).
+  (if s = 0 then H(q1).H(q2).H(q3).H(q4).H(q5).M01(q1 > w1).M01(q2 > w2).M01(q3 > w3).M01(q4 > w4).M01(q5 > w5)
+    else I(q1).I(q2).I(q3).I(q4).I(q5).MH(q1 > w1).MH(q2 > w2).MH(q3 > w3).MH(q4 > w4).MH(q5 > w5)).
+  atob!q1.atob!q2.atob!q3.atob!q4.atob!q5.
+  guess?g.
+  witness!w1.witness!w2.witness!w3.witness!w4.witness!w5.
+  secret!s.
+  a!g = s.
+  disc()
+
+proc Spec(a: chan bool, b: chan bool, cheat: chan bool) :=
+  MRandBit(> x).
+  ((a!x = 1.disc()) || (b!x = 1.disc()) || (cheat!false.disc()))
+
+proc Alison[q](atob: chan qubit, guess: chan bit, witness: chan bit, secret: chan bit, a: chan bool) :=
+  MRandBit(> s).
+  (if s = 0 then H(q).M01(q > w) else I(q).MH(q > w)).
+  atob!q.
+  guess?g.
+  witness!w.
+  secret!1-g.
+  a!false.
+  disc()
+
+proc AlisonSpec(a: chan bool, b: chan bool, cheat: chan bool) :=
+  MRandBit(> x).
+  MRandBit(> y).
+  ((a!false.disc()) || (b!false.disc()) || (cheat!x = 1 /\ y = 1.disc()))
+
+proc Alix[q0,q1](atob: chan qubit, guess: chan bit, witness: chan bit, secret: chan bit, a: chan bool) :=
+  H(q0).
+  CNOT(q0,q1).
+  atob!q0.
+  guess?g.
+  (if g = 0 then MH(q1 > w) else M01(q1 > w)).
+  witness!w.
+  secret!1-g.
+  a!false.
+  disc(q1)
+
+proc AlixSpec(a: chan bool, b: chan bool, cheat: chan bool) :=
+  ((a!false.disc()) || (b!false.disc()) || (cheat!false.disc()))
+
+state Zero := density 1 I(0)
+
+state Zero2 := density 2 I(0)
+
+state Zero5 := density 5 I(0)
+
+start "protocol" {
+  density Zero
+  process (@Alice[qb0](atob, guess, witness, secret, a) || @Bob(atob, guess, witness, secret, b, cheat)) \ atob \ guess \ secret \ witness
+}
+
+start "protocolAliceND" {
+  density Zero
+  process ((@AliceND[qb0](atob, guess, witness, secret, a, 0) + @AliceND[qb0](atob, guess, witness, secret, a, 1)) || @Bob(atob, guess, witness, secret, b, cheat)) \ atob \ guess \ secret \ witness
+}
+
+start "protocolBobND" {
+  density Zero
+  process (@Alice[qb0](atob, guess, witness, secret, a) || (@BobND(atob, guess, witness, secret, b, cheat, 0) + @BobND(atob, guess, witness, secret, b, cheat, 1))) \ atob \ guess \ secret \ witness
+}
+
+start "protocolND" {
+  density Zero
+  process ((@AliceND[qb0](atob, guess, witness, secret, a, 0) + @AliceND[qb0](atob, guess, witness, secret, a, 1)) || (@BobND(atob, guess, witness, secret, b, cheat, 0) + @BobND(atob, guess, witness, secret, b, cheat, 1))) \ atob \ guess \ secret \ witness
+}
+
+start "protocol5" {
+  density Zero5
+  process (@Alice5[qb0,qb1,qb2,qb3,qb4](atob, guess, witness, secret, a) || @Bob5(atob, guess, witness, secret, b, cheat)) \ atob \ guess \ secret \ witness
+}
+
+start "spec" {
+  density Zero
+  process @Spec(a, b, cheat) || disc(qb0)
+}
+
+start "alison_attack" {
+  density Zero
+  process (@Alison[qb0](atob, guess, witness, secret, a) || @Bob(atob, guess, witness, secret, b, cheat)) \ atob \ guess \ secret \ witness
+}
+
+start "alison_spec" {
+  density Zero
+  process @AlisonSpec(a, b, cheat) || disc(qb0)
+}
+
+start "alix_attack" {
+  density Zero2
+  process (@Alix[qb0,qb1](atob, guess, witness, secret, a) || @Bob(atob, guess, witness, secret, b, cheat)) \ atob \ guess \ secret \ witness
+}
+
+start "alix_spec" {
+  density Zero2
+  process @AlixSpec(a, b, cheat) || disc(qb0,qb1)
+}

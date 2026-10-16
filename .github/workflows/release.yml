@@ -1,0 +1,106 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch: {}
+
+# Granted to the whole run; reusable child workflows inherit within these bounds
+# (docker needs packages:write to push to GHCR, publish needs contents:write).
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  # Fail fast if the tag doesn't match the .cabal version (prevents drift between
+  # the git tag, the published artifacts, and the package version).
+  verify-version:
+    name: Verify tag == cabal version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.4.0
+      - name: Compare
+        if: github.ref_type == 'tag'
+        env:
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          CABAL_VER="$(grep -m1 '^version:' quarc.cabal | awk '{print $2}')"
+          TAG_VER="${REF_NAME#v}"
+          # Cabal versions are numeric only; drop any pre-release suffix
+          # (v1.2.3-rc1 -> 1.2.3) before comparing.
+          BASE_VER="${TAG_VER%%-*}"
+          echo "tag=$TAG_VER base=$BASE_VER cabal=$CABAL_VER"
+          if [ "$BASE_VER" != "$CABAL_VER" ]; then
+            echo "::error::tag '$REF_NAME' does not match quarc.cabal version '$CABAL_VER'"
+            exit 1
+          fi
+
+  test:
+    needs: verify-version
+    uses: ./.github/workflows/test.yml
+
+  cli:
+    needs: [verify-version, test]
+    uses: ./.github/workflows/release-cli.yml
+
+  gui:
+    needs: [verify-version, test]
+    uses: ./.github/workflows/release-gui.yml
+
+  docker:
+    needs: [verify-version, test]
+    permissions:
+      contents: read
+      packages: write
+    uses: ./.github/workflows/release-docker.yml
+
+  publish:
+    name: Publish GitHub Release
+    needs: [cli, gui, docker]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # create the GitHub Release + upload assets
+      actions: read      # `gh run download` lists artifacts via the Actions API
+    steps:
+      # Collect every release artifact uploaded by the cli/gui child workflows
+      # into one flat `dist/` directory.
+      #
+      # We use the `gh` CLI rather than actions/download-artifact@v4: the latter
+      # reliably FAILS its internal retries on the large (~100 MB) GUI AppImage
+      # ("Artifact download failed after 5 retries"), while `gh run download`
+      # fetches it fine. The `quarc-*` filter also skips the docker job's buildkit
+      # provenance artifact, which we don't want in the Release.
+      - name: Download all artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p staging dist
+          gh run download "$RUN_ID" -R "$REPO" -p 'quarc-*' -D staging
+          # gh nests each artifact under its own dir; flatten into dist/.
+          find staging -type f -exec mv -t dist {} +
+          ls -la dist
+
+      - name: Generate SHA256SUMS
+        working-directory: dist
+        run: |
+          set -euo pipefail
+          ls -la
+          # Checksum every release file; skip the sums file itself if re-run.
+          find . -maxdepth 1 -type f ! -name SHA256SUMS -printf '%P\n' | sort \
+            | xargs -r sha256sum > SHA256SUMS
+          cat SHA256SUMS
+
+      - name: Create / update GitHub Release
+        uses: softprops/action-gh-release@v2.6.2
+        # Only publish on a real tag; workflow_dispatch runs just build + checksum.
+        if: github.ref_type == 'tag'
+        with:
+          files: dist/*
+          generate_release_notes: true
+          # Mark rc/beta/alpha (semver pre-release: a hyphen in the tag) as pre-release.
+          prerelease: ${{ contains(github.ref_name, '-') }}
+          fail_on_unmatched_files: true

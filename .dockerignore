@@ -1,0 +1,23 @@
+# Build outputs and dev-only config
+dist-*/
+cabal.project.local
+*.prof
+*.prof.*
+
+# GUI toolchain artifacts (not needed by the CLI image)
+gui/node_modules/
+gui/dist/
+gui/src-tauri/target/
+gui/src-tauri/binaries/
+
+# Generated renders / scratch
+*.png
+*.svg
+
+# VCS and CI
+.git/
+.github/
+
+# Benchmark output and driver caches
+bench/results/
+__pycache__/

@@ -1,0 +1,12 @@
+cradle:
+  cabal:
+    - path: "./src"
+      component: "lib:quarc"
+    - path: "./app"
+      component: "exe:quarc"
+    - path: "./test-app"
+      component: "test:quarc-app-test"
+    - path: "./test"
+      component: "test:quarc-test"
+    - path: "./bench"
+      component: "bench:pipeline-bench"

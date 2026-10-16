@@ -1,0 +1,21 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capabilities for the main window: spawn the quarc serve sidecar, native open/save/confirm dialogs, close the window after the unsaved-changes prompt.",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-destroy",
+    "dialog:allow-open",
+    "dialog:allow-ask",
+    "dialog:allow-save",
+    {
+      "identifier": "shell:allow-spawn",
+      "allow": [{ "name": "binaries/quarc", "sidecar": true, "args": true }]
+    },
+    {
+      "identifier": "shell:allow-stdin-write",
+      "allow": [{ "name": "binaries/quarc", "sidecar": true, "args": true }]
+    }
+  ]
+}

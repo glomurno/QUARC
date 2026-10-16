@@ -1,0 +1,49 @@
+name: Release Docker
+
+on:
+  # Driven by the umbrella release.yml on a tag; dispatch allows standalone runs.
+  workflow_call: {}
+  workflow_dispatch: {}
+
+jobs:
+  docker:
+    name: Build & push image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4.4.0
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3.12.0
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3.7.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Derive image metadata
+        id: meta
+        uses: docker/metadata-action@v5.10.0
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=raw,value=latest,enable=${{ github.ref_type == 'tag' && !contains(github.ref_name, '-') }}
+            type=sha
+
+      - name: Build and push
+        uses: docker/build-push-action@v6.19.2
+        with:
+          context: .
+          # Only push on real tag releases; manual dispatch just builds.
+          push: ${{ github.ref_type == 'tag' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

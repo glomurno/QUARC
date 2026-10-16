@@ -1,0 +1,140 @@
+name: Release GUI
+
+on:
+  # Driven by the umbrella release.yml on a tag; dispatch allows standalone runs.
+  workflow_call: {}
+  workflow_dispatch: {}
+
+# Builds the Tauri desktop app per-OS with the Haskell engine embedded as a
+# sidecar (see gui/scripts/copy-sidecar.sh + `externalBin` in tauri.conf.json).
+# Installers upload as artifacts; release.yml's publish job attaches them.
+jobs:
+  gui:
+    name: GUI (${{ matrix.target }})
+    runs-on: ${{ matrix.os }}
+    # Windows can't build the hmatrix sidecar (no BLAS/LAPACK yet); keep it
+    # best-effort so it doesn't block the release.
+    continue-on-error: ${{ matrix.experimental == true }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # ubuntu-22.04 pins WebKitGTK 4.1 + an AppImage-friendly glibc.
+          - { os: ubuntu-22.04, target: linux-x86_64 }
+          # - { os: macos-14,     target: macos-arm64 }
+          # - { os: windows-latest, target: windows-x86_64, experimental: true }
+
+    env:
+      GHC_VERSION: "9.12.2"
+      CABAL_VERSION: "3.14.2.0"
+      # Build the embedded engine with the release profile (read by copy-sidecar.sh).
+      QUARC_CABAL_OPT: "--project-file=cabal.project.release"
+
+    steps:
+      - uses: actions/checkout@v4.4.0
+
+      # --- Haskell toolchain (to build the sidecar engine) ---
+      # hmatrix links -lblas -llapack (sonames libblas.so.3 / liblapack.so.3).
+      # libopenblas-dev takes over those names via Debian alternatives, so the
+      # AppImage bundles OpenBLAS instead of the slow reference BLAS. Ubuntu
+      # builds it with DYNAMIC_ARCH (per-CPU kernels picked at runtime), so the
+      # bundled copy is safe on any x86-64 CPU, unlike a host-tuned build.
+      - name: Install BLAS/LAPACK (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libblas-dev liblapack-dev libopenblas-dev
+
+      - name: Set up GHC ${{ env.GHC_VERSION }}
+        uses: haskell-actions/setup@v2.12.1
+        id: setup
+        with:
+          ghc-version: ${{ env.GHC_VERSION }}
+          cabal-version: ${{ env.CABAL_VERSION }}
+
+      - name: Restore cached Haskell dependencies
+        uses: actions/cache@v4.3.0
+        with:
+          path: ${{ steps.setup.outputs.cabal-store }}
+          key: ${{ runner.os }}-ghc-${{ steps.setup.outputs.ghc-version }}-gui-${{ hashFiles('**/*.cabal', 'cabal.project', 'cabal.project.release', 'cabal.project.freeze') }}
+          restore-keys: ${{ runner.os }}-ghc-${{ steps.setup.outputs.ghc-version }}-gui-
+
+      # --- Node + Rust (to build the Tauri app) ---
+      - name: Set up Node
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version: "20"
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust build
+        uses: swatinem/rust-cache@v2.9.2
+        with:
+          workspaces: gui/src-tauri
+
+      # WebKitGTK 4.1 + GTK + AppImage tooling. Only Linux needs these; macOS and
+      # Windows ship the required webview with the OS.
+      - name: Install Tauri system deps (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev libgtk-3-dev librsvg2-dev \
+            libayatana-appindicator3-dev patchelf
+
+      - name: Install frontend dependencies
+        working-directory: gui
+        run: npm ci
+
+      # Graphviz is NOT bundled: `dot` is a documented runtime requirement (the
+      # engine shells out to it for graph layout). See gui/README / RELEASING.md.
+
+      # Runs copy-sidecar (builds the -O2 engine, stages quarc-<triple>) then
+      # `tauri build`, emitting installers under src-tauri/target/release/bundle/.
+      - name: Build Tauri bundles
+        working-directory: gui
+        run: npm run tauri:build -- -- --locked
+
+      # The engine must run on the bundled GMP + OpenBLAS, not on host copies:
+      # check they are in the AppImage, that BLAS is OpenBLAS, and that ldd
+      # resolves them inside the AppDir.
+      - name: Verify AppImage engine libraries (Linux)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          set -euo pipefail
+          APPIMAGE="$(realpath "$(find gui/src-tauri/target/release/bundle/appimage -maxdepth 1 -name '*.AppImage' | head -n 1)")"
+          WORK="$(mktemp -d)"
+          ( cd "$WORK" && "$APPIMAGE" --appimage-extract >/dev/null )
+          ROOT="$WORK/squashfs-root"
+          for lib in libgmp.so.10 libblas.so.3 liblapack.so.3; do
+            test -e "$ROOT/usr/lib/$lib" || { echo "::error::$lib missing from AppImage"; exit 1; }
+          done
+          nm -D "$ROOT/usr/lib/libblas.so.3" | grep -q openblas_get_corename \
+            || { echo "::error::bundled libblas.so.3 is not OpenBLAS"; exit 1; }
+          ldd "$ROOT/usr/bin/quarc"
+          for lib in libgmp.so.10 libblas.so.3 liblapack.so.3; do
+            ldd "$ROOT/usr/bin/quarc" | grep -F "$lib" | grep -qF "$ROOT/usr/lib/" \
+              || { echo "::error::$lib does not resolve inside the AppImage"; exit 1; }
+          done
+          "$ROOT/usr/bin/quarc" --version
+
+      # Flatten the per-format bundle subdirs into one dir so the umbrella's
+      # merge-multiple download lands installers flat (the .app dir is skipped;
+      # the .dmg is the macOS distributable).
+      - name: Collect installers
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p gui/artifacts
+          find gui/src-tauri/target/release/bundle \
+            -type f \( -name '*.AppImage' -o -name '*.deb' -o -name '*.dmg' \
+                       -o -name '*.msi' -o -name '*.exe' \) \
+            -exec cp {} gui/artifacts/ \;
+          ls -la gui/artifacts
+
+      - name: Upload installers
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: quarc-gui-${{ matrix.target }}
+          path: gui/artifacts/*
+          if-no-files-found: error

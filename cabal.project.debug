@@ -1,0 +1,7 @@
+-- Profiling build: cabal build --project-file=cabal.project.debug --builddir=dist-debug
+import: cabal.project
+import: cabal.project.freeze
+
+optimization: 1
+profiling: True
+profiling-detail: late

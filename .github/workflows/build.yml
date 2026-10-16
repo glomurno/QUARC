@@ -1,0 +1,58 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build (GHC ${{ matrix.ghc }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ghc: ["9.12.2"]
+        cabal: ["3.14.2.0"]
+
+    steps:
+      - uses: actions/checkout@v4.4.0
+
+      - name: Install BLAS/LAPACK (required by hmatrix)
+        run: sudo apt-get update && sudo apt-get install -y libblas-dev liblapack-dev
+
+      - name: Set up GHC ${{ matrix.ghc }}
+        uses: haskell-actions/setup@v2.12.1
+        id: setup
+        with:
+          ghc-version: ${{ matrix.ghc }}
+          cabal-version: ${{ matrix.cabal }}
+
+      - name: Configure
+        run: cabal configure --enable-tests --disable-profiling
+
+      - name: Generate build plan
+        run: cabal build all --dry-run
+
+      - name: Restore cached dependencies
+        uses: actions/cache/restore@v4.3.0
+        id: cache
+        env:
+          key: ${{ runner.os }}-ghc-${{ steps.setup.outputs.ghc-version }}-cabal-${{ steps.setup.outputs.cabal-version }}
+        with:
+          path: ${{ steps.setup.outputs.cabal-store }}
+          key: ${{ env.key }}-plan-${{ hashFiles('**/plan.json') }}
+          restore-keys: ${{ env.key }}-
+
+      - name: Install dependencies
+        run: cabal build all --only-dependencies
+
+      - name: Save cached dependencies
+        uses: actions/cache/save@v4.3.0
+        if: steps.cache.outputs.cache-primary-key != steps.cache.outputs.cache-matched-key
+        with:
+          path: ${{ steps.setup.outputs.cabal-store }}
+          key: ${{ steps.cache.outputs.cache-primary-key }}
+
+      - name: Build
+        run: cabal build all

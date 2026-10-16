@@ -1,0 +1,119 @@
+name: Release CLI
+
+on:
+  # Driven by the umbrella release.yml on a tag; dispatch allows standalone runs.
+  workflow_call: {}
+  workflow_dispatch: {}
+
+# Archives are uploaded as workflow artifacts; a later `publish` job (release.yml)
+# collects them, builds SHA256SUMS, and attaches everything to the GitHub Release.
+jobs:
+  cli:
+    name: CLI (${{ matrix.target }})
+    runs-on: ${{ matrix.os }}
+    # Windows native builds of hmatrix+OpenBLAS are fragile; don't let a Windows
+    # failure block the Linux/macOS artifacts or the wider release.
+    continue-on-error: ${{ matrix.experimental == true }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest, target: linux-x86_64, ext: tar.gz }
+          # - { os: macos-14,       target: macos-arm64,   ext: tar.gz }
+          # - { os: windows-latest, target: windows-x86_64, ext: zip, experimental: true }
+
+    env:
+      GHC_VERSION: "9.12.2"
+      CABAL_VERSION: "3.14.2.0"
+      # Release build settings (-O2, no profiling) live in cabal.project.release.
+      # Every cabal call must pass it, `list-bin` included, or it resolves another build.
+      CABAL_PROJECT: "--project-file=cabal.project.release"
+
+    steps:
+      - uses: actions/checkout@v4.4.0
+
+      # hmatrix needs BLAS/LAPACK. Linux: apt. macOS: the Accelerate framework is
+      # used by default, so nothing to install. Windows: provided via the GHC
+      # toolchain's msys2 environment (best-effort).
+      - name: Install BLAS/LAPACK (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libblas-dev liblapack-dev
+
+      - name: Set up GHC ${{ env.GHC_VERSION }}
+        uses: haskell-actions/setup@v2.12.1
+        id: setup
+        with:
+          ghc-version: ${{ env.GHC_VERSION }}
+          cabal-version: ${{ env.CABAL_VERSION }}
+
+      - name: Generate build plan
+        run: cabal build $CABAL_PROJECT exe:quarc --dry-run
+
+      - name: Restore cached dependencies
+        uses: actions/cache/restore@v4.3.0
+        id: cache
+        env:
+          key: ${{ runner.os }}-ghc-${{ steps.setup.outputs.ghc-version }}-cabal-${{ steps.setup.outputs.cabal-version }}
+        with:
+          path: ${{ steps.setup.outputs.cabal-store }}
+          key: ${{ env.key }}-release-${{ hashFiles('**/plan.json') }}
+          restore-keys: ${{ env.key }}-release-
+
+      - name: Build dependencies
+        run: cabal build $CABAL_PROJECT exe:quarc --only-dependencies
+
+      - name: Save cached dependencies
+        uses: actions/cache/save@v4.3.0
+        if: steps.cache.outputs.cache-primary-key != steps.cache.outputs.cache-matched-key
+        with:
+          path: ${{ steps.setup.outputs.cabal-store }}
+          key: ${{ steps.cache.outputs.cache-primary-key }}
+
+      - name: Build QUARC (release profile)
+        run: cabal build $CABAL_PROJECT exe:quarc
+
+      # Stage the binary alongside docs and runnable examples.
+      - name: Stage release archive
+        id: stage
+        shell: bash
+        env:
+          TARGET: ${{ matrix.target }}
+          EXT: ${{ matrix.ext }}
+        run: |
+          set -euo pipefail
+          VERSION="$(grep -m1 '^version:' quarc.cabal | awk '{print $2}')"
+          STAGE="quarc-${VERSION}-${TARGET}"
+          BIN="$(cabal list-bin $CABAL_PROJECT exe:quarc)"
+          mkdir -p "$STAGE"
+          # On Windows the binary has a .exe suffix; cp preserves it via the path.
+          cp "$BIN" "$STAGE/"
+          # Strip debug/symbol tables on Unix (~40% smaller). Windows `strip` is
+          # unreliable for GHC output, so leave the .exe as-is there.
+          if [ "$RUNNER_OS" != "Windows" ]; then strip "$STAGE/$(basename "$BIN")"; fi
+          cp README.md LICENSE QUARC_SYNTAX.md "$STAGE/"
+          cp -r test_procs "$STAGE/examples"
+          echo "stage=$STAGE" >> "$GITHUB_OUTPUT"
+          echo "archive=${STAGE}.${EXT}" >> "$GITHUB_OUTPUT"
+
+      - name: Package (tar.gz)
+        if: matrix.ext == 'tar.gz'
+        shell: bash
+        env:
+          STAGE: ${{ steps.stage.outputs.stage }}
+          ARCHIVE: ${{ steps.stage.outputs.archive }}
+        run: tar -czf "$ARCHIVE" "$STAGE"
+
+      - name: Package (zip)
+        if: matrix.ext == 'zip'
+        shell: pwsh
+        env:
+          STAGE: ${{ steps.stage.outputs.stage }}
+          ARCHIVE: ${{ steps.stage.outputs.archive }}
+        run: Compress-Archive -Path "$env:STAGE" -DestinationPath "$env:ARCHIVE"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: ${{ steps.stage.outputs.archive }}
+          path: ${{ steps.stage.outputs.archive }}
+          if-no-files-found: error

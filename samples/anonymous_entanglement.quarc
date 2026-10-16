@@ -1,0 +1,35 @@
+proc AESender[q](send1: chan bit, send2: chan bit, recv1: chan bit, recv2: chan bit, outCh: chan qubit) :=
+  MRandBit(> b).
+  ((send1!b.send2!b.disc()) || (recv1?y.recv2?z.disc()) || ((if b = 1 then Z(q) else I(q)).outCh!q.disc()))
+
+proc AEReceiver[q](send1: chan bit, send2: chan bit, recv1: chan bit, recv2: chan bit, outCh: chan qubit) :=
+  MRandBit(> b).
+  ((send1!b.send2!b.disc()) || (recv1?y.recv2?z.(if y ^ z = 1 then Z(q) else I(q)).outCh!q.disc()))
+
+proc AEAgent[q](send1: chan bit, send2: chan bit, recv1: chan bit, recv2: chan bit) :=
+  H(q).
+  M01(q > b).
+  ((send1!b.send2!b.disc(q)) || (recv1?y.recv2?z.disc()))
+
+state GHZ := density 3 H(0).CNOT(0,1).CNOT(1,2)
+
+start "honest_0to1" {
+  density GHZ
+  process (@AESender[qb0](ab, ac, ba, ca, outs)
+            || @AEReceiver[qb1](ba, bc, ab, cb, outr)
+            || @AEAgent[qb2](ca, cb, ac, bc)
+          ) \ ab \ ac \ ba \ bc \ ca \ cb
+}
+
+start "honest_2to1" {
+  density GHZ
+  process (@AEAgent[qb0](ab, ac, ba, ca)
+            || @AESender[qb1](ba, bc, ab, cb, outs)
+            || @AEReceiver[qb2](ca, cb, ac, bc, outr)
+          ) \ ab \ ac \ ba \ bc \ ca \ cb
+}
+
+start "spec_0to1" {
+  density GHZ
+  process ((SetPhiP(qb0,qb1).((outs!qb0.disc()) || (outr!qb1.disc()))) || disc(qb2))
+}

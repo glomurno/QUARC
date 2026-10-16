@@ -1,0 +1,138 @@
+# Workloads for bench/run_benchmarks.py.
+#
+# Every task runs in a fresh `pipeline-bench` process, which repeats the whole
+# pipeline (parse -> tagging -> typecheck -> eval -> minimize/compare) from the
+# source text and times each phase. Layout and rendering are never run.
+#
+# Task kinds, per [[file]]:
+#   check    = true                     typecheck every declaration and start block
+#   eval     = ["block", ...]           evaluate a start block to its LTS
+#   minimize = ["block", ...]           evaluate, then compute the bisimilarity quotient
+#   compare  = [["left", "right"], ...] evaluate both, then decide bisimilarity
+#
+# A list entry can also be an inline table that overrides any [defaults] key
+# for that task only, e.g. { config = "big", min_reps = 3 } or
+# { configs = ["a", "b"], equivalence = "branching", id = "custom-id" }.
+# Keys from [defaults] can also be set on a [[file]] to override them for all
+# of that file's tasks. An `equivalence` list expands into one task per value.
+#
+# Task ids are "<file stem>/<kind>/<blocks joined by ~>[/<equivalence>]" and
+# are what --filter/--exclude match against.
+
+[build]
+# The release profile: -O2, no profiling. The project file and every file it
+# imports are hashed into results.json.
+project_file = "cabal.project.release"
+builddir = "dist-release"
+cabal_flags = ["--enable-benchmarks"]
+
+[defaults]
+group = "small"             # select with --group / --skip-group
+warmup = 3                  # unmeasured repetitions per task
+min_reps = 20               # measured repetitions, at least...
+min_time = 2.0              # ...and until this many seconds were measured,
+max_reps = 500              # but never more than this
+timeout = 3600              # seconds per task, whole process
+tagging = "branch"          # auto-tagging policy: branch | linear
+tags = "angelic"            # tag identification: file | demonic | angelic
+equivalence = ["branching"]
+rooted = false              # rooted branching bisimilarity (compare only)
+rts = []                    # extra RTS flags, e.g. ["-A64m"]
+pin_cpu = ""                # run under `taskset -c <pin_cpu>` when set, e.g. "2"
+
+[[file]]
+path = "samples/teleportation.quarc"
+check = true
+minimize = ["example", "exampleSpecStrong", "exampleSpecWeak"]
+compare = [["example", "exampleSpecStrong"], ["example", "exampleSpecWeak"]]
+
+[[file]]
+path = "samples/superdense_coding.quarc"
+check = true
+minimize = ["user", "specweak"]
+compare = [["user", "specweak"]]
+
+[[file]]
+path = "samples/anonymous_entanglement.quarc"
+check = true
+minimize = ["honest_0to1", "honest_2to1", "spec_0to1"]
+compare = [["honest_0to1", "spec_0to1"], ["honest_0to1", "honest_2to1"]]
+
+[[file]]
+path = "samples/cointoss.quarc"
+check = true
+minimize = [
+  "protocol",
+  "protocol5",
+  "spec",
+  "alison_attack",
+  "alison_spec",
+  "alix_attack",
+  "alix_spec",
+]
+compare = [
+  [
+    "protocol",
+    "spec",
+  ],
+  [
+    "alison_attack",
+    "alison_spec",
+  ],
+  [
+    "alix_attack",
+    "alix_spec",
+  ],
+]
+
+[[file]]
+path = "samples/quantum_secret_sharing.quarc"
+check = true
+minimize = ["honest", "spec", { config = "honest3", min_reps = 10 }, "spec3"]
+compare = [
+  [
+    "honest",
+    "spec",
+  ],
+  { configs = [
+    "honest3",
+    "spec3",
+  ], min_reps = 10 },
+]
+
+[[file]]
+path = "samples/anonymous_transmission.quarc"
+check = true
+minimize = [
+  "honest1",
+  "honest2",
+  "honest3",
+  "attacker12",
+  "attacker22",
+  "spec",
+  { config = "honest1open", group = "large", warmup = 1, min_reps = 3, min_time = 0 },
+  { config = "attacker11", group = "large", warmup = 1, min_reps = 3, min_time = 0 },
+  { config = "attacker21", group = "large", warmup = 1, min_reps = 3, min_time = 0 },
+]
+compare = [
+  [
+    "honest1",
+    "spec",
+  ],
+  [
+    "honest2",
+    "spec",
+  ],
+  [
+    "honest3",
+    "spec",
+  ],
+  [
+    "attacker12",
+    "spec",
+  ],
+  [
+    "attacker22",
+    "spec",
+  ],
+]

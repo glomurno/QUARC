@@ -1,0 +1,108 @@
+proc ATAgent[q](out: chan bit, send1: chan bit, send2: chan bit, recv1: chan bit, recv2: chan bit) :=
+  H(q).
+  M01(q > x).
+  ((send1!x.send2!x.disc(q)) || (recv1?y.recv2?z.out!x^y^z.disc()))
+
+proc ATSender[q](out: chan bit, send1: chan bit, send2: chan bit, recv1: chan bit, recv2: chan bit, msg: bit) :=
+  (if msg = 0 then I(q) else Z(q)).
+  @ATAgent[q](out, send1, send2, recv1, recv2)
+
+-- Skips the Hadamard and sends the opposite bit to another agent
+proc Attacker1[q](out: chan bit, send1: chan bit, send2: chan bit, recv1: chan bit, recv2: chan bit) :=
+  tau.
+  M01(q > x).
+  ((send1!x.send2!1-x.disc(q)) || (recv1?y.recv2?z.out!x^y^z.disc()))
+
+-- Only sends his bit to one agent
+proc Attacker2[q](out: chan bit, send1: chan bit, recv1: chan bit, recv2: chan bit) :=
+  H(q).
+  M01(q > x).
+  ((send1!x.disc(q)) || (recv1?y.recv2?z.out!x^y^z.disc()))
+
+state GHZ := density 3 H(0).CNOT(0,1).CNOT(1,2)
+
+start "honest1" {
+  density GHZ
+  process ((@ATSender[qb0](aout, ab, ac, ba, ca, 0) + (@ATSender[qb0](aout, ab, ac, ba, ca, 1)))
+             || @ATAgent[qb1](bout, ba, bc, ab, cb)
+             || @ATAgent[qb2](cout, ca, cb, ac, bc)
+          ) \ ab \ ac \ ba \ bc \ ca \ cb
+}
+
+start "honest1open" {
+  density GHZ
+  process ((@ATSender[qb0](aout, ab, ac, ba, ca, 0) + (@ATSender[qb0](aout, ab, ac, ba, ca, 1)))
+             || @ATAgent[qb1](bout, ba, bc, ab, cb)
+             || @ATAgent[qb2](cout, ca, cb, ac, bc)
+          )
+}
+
+start "honest2" {
+  density GHZ
+  process ((@ATSender[qb1](bout, ba, bc, ab, cb, 0) + (@ATSender[qb1](bout, ba, bc, ab, cb, 1)))
+             || @ATAgent[qb0](aout, ab, ac, ba, ca)
+             || @ATAgent[qb2](cout, ca, cb, ac, bc)
+          ) \ ab \ ac \ ba \ bc \ ca \ cb
+}
+
+start "honest2open" {
+  density GHZ
+  process ((@ATSender[qb1](bout, ba, bc, ab, cb, 0) + (@ATSender[qb1](bout, ba, bc, ab, cb, 1)))
+             || @ATAgent[qb0](aout, ab, ac, ba, ca)
+             || @ATAgent[qb2](cout, ca, cb, ac, bc)
+          )
+}
+
+start "honest3" {
+  density GHZ
+  process ((@ATSender[qb2](cout, ca, cb, ac, bc, 0) + (@ATSender[qb2](cout, ca, cb, ac, bc, 1)))
+             || @ATAgent[qb0](aout, ab, ac, ba, ca)
+             || @ATAgent[qb1](bout, ba, bc, ab, cb)
+          ) \ ab \ ac \ ba \ bc \ ca \ cb
+}
+
+start "honest3open" {
+  density GHZ
+  process ((@ATSender[qb2](cout, ca, cb, ac, bc, 0) + (@ATSender[qb2](cout, ca, cb, ac, bc, 1)))
+             || @ATAgent[qb0](aout, ab, ac, ba, ca)
+             || @ATAgent[qb1](bout, ba, bc, ab, cb)
+          )
+}
+
+start "attacker11" {
+  density GHZ
+  process ((@ATSender[qb0](aout, ab, ac, ba, ca, 0) + (@ATSender[qb0](aout, ab, ac, ba, ca, 1)))
+             || @ATAgent[qb1](bout, ba, bc, ab, cb)
+             || @Attacker1[qb2](cout, ca, cb, ac, bc)
+          )
+}
+
+start "attacker21" {
+  density GHZ
+  process ((@ATSender[qb0](aout, ab, ac, ba, ca, 0) + (@ATSender[qb0](aout, ab, ac, ba, ca, 1)))
+             || @ATAgent[qb1](bout, ba, bc, ab, cb)
+             || @Attacker2[qb2](cout, ca, ac, bc)
+          )
+}
+
+start "attacker12" {
+  density GHZ
+  process ((@ATSender[qb1](bout, ba, bc, ab, cb, 0) + (@ATSender[qb1](bout, ba, bc, ab, cb, 1)))
+             || @ATAgent[qb0](aout, ab, ac, ba, ca)
+             || @Attacker1[qb2](cout, ca, cb, ac, bc)
+          ) \ ab \ ac \ ba \ bc \ ca \ cb
+}
+
+start "attacker22" {
+  density GHZ
+  process ((@ATSender[qb1](bout, ba, bc, ab, cb, 0) + (@ATSender[qb1](bout, ba, bc, ab, cb, 1)))
+             || @ATAgent[qb0](aout, ab, ac, ba, ca)
+             || @Attacker2[qb2](cout, cb, ac, bc)
+          ) \ ab \ ac \ ba \ bc \ ca \ cb
+}
+
+start "spec" {
+  density GHZ
+  process (tau.((aout!0.disc()) || (bout!0.disc()) || (cout!0.disc()) || disc(qb0,qb1,qb2)))
+            + (tau.((aout!1.disc()) || (bout!1.disc()) || (cout!1.disc()) || disc(qb0,qb1,qb2)))
+}

@@ -1,0 +1,41 @@
+proc UserEncoder[qHBell](c: chan qubit) :=
+  (I(qHBell) + X(qHBell) + Z(qHBell) + ZX(qHBell)).
+  c!qHBell.
+  disc()
+
+proc Encoder[qHBell](c: chan qubit, msg: bits 2) :=
+  if      msg = 0 then I(qHBell).c!qHBell.disc()
+  else if msg = 1 then X(qHBell).c!qHBell.disc()
+  else if msg = 2 then Z(qHBell).c!qHBell.disc()
+                  else ZX(qHBell).c!qHBell.disc()
+
+proc Decoder[qHBell](c: chan qubit, outCh: chan bits 2) :=
+  c?qEnc.
+  CNOT(qEnc, qHBell).
+  H(qEnc).
+  M201(qEnc, qHBell > dec).
+  outCh!dec.
+  disc(qEnc, qHBell)
+
+proc SpecWeak[qHBell1, qHBell2](outCh: chan bits 2) :=
+  (tau.outCh!0b00.disc(qHBell1, qHBell2))
+  + (tau.outCh!0b01.disc(qHBell1, qHBell2))
+  + (tau.outCh!0b10.disc(qHBell1, qHBell2))
+  + (tau.outCh!0b11.disc(qHBell1, qHBell2))
+
+state Bell := density 2 H(0).CNOT(0,1)
+
+start "user" {
+  density Bell
+  process (@UserEncoder[qb0](c) || @Decoder[qb1](c, out)) \ c
+}
+
+start "encoder" {
+  density Bell
+  process ((@Encoder[qb0](c, 0b00) + @Encoder[qb0](c, 0b10) + @Encoder[qb0](c, 0b01) + @Encoder[qb0](c, 0b11)) || (@Decoder[qb1](c, out))) \ c
+}
+
+start "specweak" {
+  density Bell
+  process @SpecWeak[qb0,qb1](out)
+}

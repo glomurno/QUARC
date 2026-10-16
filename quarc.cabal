@@ -1,0 +1,224 @@
+cabal-version:   3.14
+
+name:            quarc
+version:         0.1.0.0
+synopsis:        QUantum pRotocol Checker for the lqCCS process algebra
+-- description:
+
+license:         MIT
+license-file:    LICENSE
+
+author:          Giuseppe Lomurno
+maintainer:      lomurno.giuseppe97@gmail.com
+-- copyright:
+category:        Language
+build-type:      Simple
+
+extra-doc-files: CHANGELOG.md
+-- extra-source-files:
+
+common warnings
+  ghc-options: -Wall
+               -Wcompat
+               -Widentities
+               -Wincomplete-record-updates
+               -Wincomplete-uni-patterns
+               -Wpartial-fields
+               -Wredundant-constraints
+
+library
+  import:           warnings
+  exposed-modules:
+    Data.WithData
+    Data.LTS
+    LqCCS.Bisimulation
+    LqCCS.EvalTagged
+    LqCCS.Import
+    LqCCS.Parser
+    LqCCS.Parser.Internal
+    LqCCS.Parser.File
+    LqCCS.Pretty
+    LqCCS.QDist
+    LqCCS.Quantum
+    LqCCS.Quantum.Compose
+    LqCCS.Tagging
+    LqCCS.Typecheck
+    LqCCS.Types
+  -- other-modules:
+  -- other-extensions:
+  build-depends:
+    , base ^>=4.21
+    , containers ^>=0.6.8
+    , directory ^>=1.3.9.0
+    , filepath ^>=1.5.4.0
+    , graphviz ^>=2999.20.2.1
+    , hashable ^>=1.5.1.0
+    , hmatrix ^>=0.20.2
+    , megaparsec ^>=9.7.0
+    , mtl ^>=2.3.1
+    , parser-combinators ^>=1.3.1
+    , prettyprinter ^>=1.7.1
+    , text ^>=2.1.4
+    , unordered-containers ^>=0.2.21
+    , vector ^>=0.13.2.0
+  hs-source-dirs:   src
+  default-language: GHC2021
+
+executable quarc
+  import:           warnings
+  -- -with-rtsopts=-N uses all cores by default, and -qg disables the
+  -- parallel GC: evaluation is single-threaded, and stopping every core
+  -- for each young-generation collection made it ~1.5x slower.
+  ghc-options:      -threaded -rtsopts "-with-rtsopts=-N -qg"
+
+  main-is:          Main.hs
+  other-modules:
+    Api.Check
+    Api.Contract
+    Api.Diagnostics
+    Api.Encode
+    Api.Layout
+    Diagnostic
+    Logging
+    Options
+    Command.Check
+    Command.Equiv
+    Command.Eval
+    Command.Minimize
+    Command.Serve
+    Command.Utils
+    Server.Protocol
+    Server.Session
+
+  -- other-extensions:
+
+  build-depends:
+    , aeson ^>=2.2.3.0
+    , base ^>=4.21
+    , base64-bytestring ^>=1.2.1.0
+    , bytestring ^>=0.12.2.0
+    , containers ^>=0.6.8
+    , graphviz ^>=2999.20.2.1
+    , diagnose ^>=2.5.1
+    , directory ^>=1.3.9.0
+    , filepath ^>=1.5.4.0
+    , hashable ^>=1.5.1.0
+    , hmatrix ^>=0.20.2
+    , megaparsec ^>=9.7.0
+    , mtl ^>=2.3.1
+    , optics ^>=0.4.2.1
+    , parser-combinators ^>=1.3.1
+    , prettyprinter ^>=1.7.1
+    , process ^>=1.6.25.0
+    , quarc
+    , text ^>=2.1.4
+    , unordered-containers ^>=0.2.21
+    , optparse-applicative ^>=0.19.0.0
+    , vector ^>=0.13.2.0
+
+  hs-source-dirs:   app
+  default-language: GHC2021
+
+test-suite quarc-test
+  import:             warnings
+  default-language:   GHC2021
+  type:               exitcode-stdio-1.0
+  hs-source-dirs:     test
+  main-is:            Spec.hs
+
+  other-modules:
+    Common
+    LqCCS.BisimulationSpec
+    LqCCS.EvalSpec
+    LqCCS.FileParserSpec
+    LqCCS.ImportSpec
+    LqCCS.ParserSpec
+    LqCCS.TaggingSpec
+    LqCCS.TypecheckSpec
+    LqCCS.QuantumSpec
+
+  build-depends:
+    , base ^>=4.21
+    , containers ^>=0.6.8
+    , directory ^>=1.3.9.0
+    , filepath ^>=1.5.4.0
+    , hmatrix ^>=0.20.2
+    , hspec ^>=2.11.16
+    , hspec-discover ^>=2.11.16
+    , hspec-megaparsec ^>=2.2.1
+    , megaparsec ^>=9.7.0
+    , mtl ^>=2.3.1
+    , probability ^>=0.2.8
+    , quarc
+    , temporary ^>=1.3
+    , text ^>=2.1.4
+    , hedgehog ^>=1.7
+    , unordered-containers ^>=0.2.21
+
+  build-tool-depends: hspec-discover:hspec-discover ^>=2.11.16
+
+test-suite quarc-app-test
+  import:             warnings
+  default-language:   GHC2021
+  type:               exitcode-stdio-1.0
+  hs-source-dirs:     app, test-app
+  main-is:            Spec.hs
+
+  other-modules:
+    Api.EncodeSpec
+    Command.ExitStatusSpec
+    OptionsSpec
+    Server.SessionSpec
+    Api.Check
+    Api.Contract
+    Api.Diagnostics
+    Api.Encode
+    Api.Layout
+    Command.Equiv
+    Command.Eval
+    Command.Minimize
+    Command.Utils
+    Diagnostic
+    Logging
+    Options
+    Server.Protocol
+    Server.Session
+
+  build-depends:
+    , aeson ^>=2.2.3.0
+    , base ^>=4.21
+    , base64-bytestring ^>=1.2.1.0
+    , bytestring ^>=0.12.2.0
+    , containers ^>=0.6.8
+    , diagnose ^>=2.5.1
+    , directory ^>=1.3.9.0
+    , filepath ^>=1.5.4.0
+    , graphviz ^>=2999.20.2.1
+    , hmatrix ^>=0.20.2
+    , megaparsec ^>=9.7.0
+    , mtl ^>=2.3.1
+    , hspec ^>=2.11.16
+    , optparse-applicative ^>=0.19.0.0
+    , prettyprinter ^>=1.7.1
+    , quarc
+    , text ^>=2.1.4
+    , unordered-containers ^>=0.2.21
+
+  build-tool-depends: hspec-discover:hspec-discover ^>=2.11.16
+
+benchmark pipeline-bench
+  import:           warnings
+  type:             exitcode-stdio-1.0
+  main-is:          Pipeline.hs
+  hs-source-dirs:   bench
+  ghc-options:      -threaded -rtsopts "-with-rtsopts=-N -qg -T"
+  default-language: GHC2021
+  build-depends:
+    , aeson ^>=2.2.3.0
+    , base ^>=4.21
+    , bytestring ^>=0.12.2.0
+    , directory ^>=1.3.9.0
+    , optparse-applicative ^>=0.19.0.0
+    , quarc
+    , unordered-containers ^>=0.2.21
+    , containers ^>=0.6.8

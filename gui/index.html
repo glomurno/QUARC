@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en" data-theme="lab">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QUARC · LTS Workbench</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="topbar">
+        <div class="brand">QUARC <small>workbench</small></div>
+        <div class="tb-sep"></div>
+        <div class="file-split" id="fileSplit">
+          <button class="tbtn file-open" id="openBtn" data-cmd="open" data-tip="Open a .quarc file">
+            <span class="ic" data-icon="folder"></span><span id="fileLabel">open file…</span>
+          </button>
+          <button class="tbtn file-more" id="fileMoreBtn" data-icon="chevron-down" data-cmd="fileMenu" data-tip="Recent files · open by path · reload"></button>
+        </div>
+        <div class="tb-sep"></div>
+        <div class="spacer"></div>
+        <div id="banner-msg" class="banner-msg"></div>
+        <button class="tbtn" id="exportBtn" disabled data-cmd="exportMenu" data-tip="Export the current graph or document">
+          <span class="ic" data-icon="download"></span>export<span class="ic caret" data-icon="chevron-down"></span>
+        </button>
+        <div class="tb-sep"></div>
+        <button class="tbtn palette-btn" id="paletteBtn" data-cmd="palette" data-tip="Find and run any command">
+          <span class="ic" data-icon="search"></span>commands<kbd id="paletteKbd"></kbd>
+        </button>
+        <button class="icon-btn" id="keysBtn" data-icon="keyboard" data-cmd="shortcuts" data-tip="Keyboard shortcuts"></button>
+        <button class="icon-btn" id="settingsBtn" data-icon="settings" data-cmd="settings" data-tip="Render &amp; semantics settings"></button>
+        <button class="icon-btn" id="themeBtn" data-cmd="theme" data-tip="Toggle light/dark theme"></button>
+      </div>
+
+      <!-- File menu: open by path, recent files, reload -->
+      <div class="popover file-menu" id="fileMenu">
+        <h5>Open by path</h5>
+        <div class="path-row">
+          <input id="filePath" type="text" spellcheck="false" placeholder="paste a .quarc path, then Enter" />
+          <button class="cbtn icon-only" id="pathGoBtn" data-icon="corner-down-left" title="Open this path"></button>
+        </div>
+        <h5>Recent</h5>
+        <div id="recentList"></div>
+        <div class="menu-sep"></div>
+        <button class="menu-item" id="reloadBtn" disabled><span class="ic" data-icon="refresh-cw"></span>reload from disk</button>
+      </div>
+
+      <!-- Settings / export popover -->
+      <div class="popover" id="settingsPanel">
+        <h5>Render</h5>
+        <div class="pset" id="psetSugar">
+          <div>
+            <div>sugar</div>
+            <div class="desc">syntactic sugar in pretty terms</div>
+          </div>
+          <div class="sw-toggle" id="sugarSw"><i></i></div>
+        </div>
+        <div class="pset" id="psetSimplify">
+          <div>
+            <div>simplify</div>
+            <div class="desc">algebraic simplification</div>
+          </div>
+          <div class="sw-toggle" id="simplifySw"><i></i></div>
+        </div>
+        <h5>Semantics</h5>
+        <div class="pset" id="psetLinearTags">
+          <div>
+            <div>linear tagging</div>
+            <div class="desc">fresh tag for every untagged action</div>
+          </div>
+          <div class="sw-toggle" id="linearTagsSw"><i></i></div>
+        </div>
+        <h5>Display</h5>
+        <div class="pset" id="psetClassColors">
+          <div>
+            <div>class colors</div>
+            <div class="desc">color nodes by equivalence class</div>
+          </div>
+          <div class="sw-toggle" id="classColorsSw"><i></i></div>
+        </div>
+      </div>
+
+      <!-- Export menu -->
+      <div class="popover menu export-menu" id="exportMenu">
+        <h5>Graph image</h5>
+        <button class="menu-item rich" id="exportSvgBtn" disabled>
+          <span class="ic" data-icon="file"></span><span><span class="mi-t">SVG</span><span class="mi-d">vector image of the current view, rendered by graphviz</span><span class="mi-why"></span></span>
+        </button>
+        <button class="menu-item rich" id="exportPngBtn" disabled>
+          <span class="ic" data-icon="file"></span><span><span class="mi-t">PNG</span><span class="mi-d">bitmap image of the current view</span><span class="mi-why"></span></span>
+        </button>
+        <h5>Data</h5>
+        <button class="menu-item rich" id="exportJsonBtn" disabled>
+          <span class="ic" data-icon="file"></span><span><span class="mi-t">JSON document</span><span class="mi-d">states, transitions, classes and layout (quarc.lts/1)</span><span class="mi-why"></span></span>
+        </button>
+      </div>
+
+      <!-- Silent-τ picker (anchored under its top-bar button) -->
+      <div class="popover silence-pop" id="silencePanel"></div>
+
+      <!-- ───────── Main 3 panes ───────── -->
+      <div id="main">
+        <!-- LEFT: Sources / configs -->
+        <div class="pane" id="left">
+          <div class="pane-head">
+            <span class="label-cap">Sources</span>
+            <div class="ph-actions">
+              <button class="rail-btn" id="refreshCfgBtn" data-icon="refresh-cw" disabled data-cmd="refreshConfigs" data-tip="Refresh configurations from the editor"></button>
+              <button class="rail-btn" id="sourcesToggle" data-icon="chevrons-left" data-cmd="sidebar" data-tip="Collapse sidebar"></button>
+            </div>
+          </div>
+          <div class="pane-body tree" id="sourcesBody"></div>
+          <div class="hint">
+            <b>click</b> a node to inspect · drag to reposition · scroll to zoom<br />
+            <kbd id="hintPal"></kbd> commands · <kbd>?</kbd> shortcuts
+          </div>
+        </div>
+
+        <!-- CENTER: canvas + editor split -->
+        <div class="pane" id="center">
+          <!-- View header: which view, under which equivalence, of what -->
+          <div id="viewHead">
+            <div id="viewBar">
+              <div class="seg" id="viewSeg" role="tablist" aria-label="View">
+                <button role="tab" data-view="explore" data-cmd="explore" data-tip="Explore: the full LTS of the selected configuration">explore</button>
+                <button role="tab" data-view="minimize" data-cmd="minimize" data-tip="Minimize: the quotient LTS, with equivalent states merged">minimize</button>
+                <button role="tab" data-view="compare" data-cmd="compare" data-tip="Compare: check whether two configurations are equivalent, side by side">compare</button>
+              </div>
+              <label class="field" id="equivField">
+                <span class="field-cap">equivalence</span>
+                <select id="equivSel" class="cmp-select">
+                  <option value="strong" data-desc="Strong bisimilarity: every step, τ included, must be matched one for one">strong</option>
+                  <option value="branching" data-desc="Branching bisimilarity: silent τ steps can be skipped when they don't change the possible futures">branching</option>
+                </select>
+              </label>
+              <button class="cbtn" id="silenceBtn" disabled data-cmd="silence"
+                data-tip="Choose which τ tags are silent for branching bisimilarity"><span class="ic" data-icon="tag"></span><span id="silenceLabel">silent τ</span></button>
+              <div class="crumb" id="viewCrumb"></div>
+            </div>
+            <div id="compareBar" class="hidden">
+              <label class="field"><span class="field-cap">compare</span><select id="cfgA" class="cmp-select"></select></label>
+              <span class="cmp-vs">vs</span>
+              <label class="field"><span class="field-cap">with</span><select id="cfgB" class="cmp-select"></select></label>
+              <div class="cmp-sep"></div>
+              <button class="cbtn chk" id="rootedBtn" data-cmd="rooted"
+                data-tip="Rooted branching: the first steps must match one for one (preserved by choice)"><span class="box"></span>rooted</button>
+              <label class="field"><span class="field-cap">tags</span>
+                <select id="tagMode" class="cmp-select">
+                  <option value="tag" data-desc="Identify tags declared equivalent in the file's tag-equiv blocks">file tag-equiv</option>
+                  <option value="" data-desc="Demonic: tags must match exactly, no equivalence">exact (demonic)</option>
+                  <option value="angelic" selected data-desc="Angelic: every tag is considered equal to every other">all equal (angelic)</option>
+                </select>
+              </label>
+              <button class="cbtn chk" id="quotientBtn" data-cmd="quotients"
+                data-tip="Draw each side's quotient (minimized) LTS instead of the full one"><span class="box"></span>quotients</button>
+              <button id="runCompare" class="cbtn" data-cmd="runCompare" data-tip="Run the comparison again (after editing the source)"><span class="ic" data-icon="rotate-ccw"></span>re-run</button>
+            </div>
+          </div>
+          <div class="canvas-wrap" id="canvasWrap">
+            <div class="gridbg"></div>
+
+            <div class="sigma" id="canvas"></div>
+            <div class="canvas-empty hidden" id="canvasEmpty"></div>
+            <div class="welcome" id="welcome"></div>
+
+            <div id="compareGrid">
+              <div class="sigma-pane">
+                <div class="sigma" id="canvasA"></div>
+                <div class="pane-tag">
+                  <span class="pip" style="background: var(--accent)"></span><span id="paneHeadA"></span>
+                </div>
+              </div>
+              <div class="vdivider"></div>
+              <div class="sigma-pane">
+                <div class="sigma" id="canvasB"></div>
+                <div class="pane-tag">
+                  <span class="pip" style="background: var(--warm)"></span><span id="paneHeadB"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="banner" id="verdictBanner">
+              <div class="verdict"><span class="vmark" aria-hidden="true"></span><span id="verdictText"></span></div>
+              <span class="small" id="verdictSub"></span>
+              <button class="mini-btn" id="verdictWhere" data-cmd="divergence" data-tip="Show where the two sides first differ">where?</button>
+            </div>
+            <!-- running job: phase, elapsed time, cancel -->
+            <div class="busy hidden" id="busy">
+              <span class="spinner"></span><span id="busyText">working…</span>
+              <button class="mini-btn" id="busyCancel" data-cmd="cancel">cancel</button>
+            </div>
+            <div class="layout-note hidden" id="layoutNote"></div>
+
+            <div class="canvas-toolbar">
+              <div class="tgroup" role="group" aria-label="View">
+                <span class="tg-cap">view</span>
+                <button class="cbtn" id="fitBtn" data-cmd="fit" data-tip="Zoom to fit the whole graph"><span class="ic" data-icon="scan"></span>fit</button>
+                <button class="cbtn" id="restoreBtn" data-cmd="restoreLayout" data-tip="Restore the original layout (undo node drags)"><span class="ic" data-icon="rotate-ccw"></span>layout</button>
+                <button class="cbtn" id="spacingBtn" data-cmd="spacing" data-tip="Stretch the layout horizontally / vertically"><span class="ic" data-icon="sliders"></span>spacing</button>
+              </div>
+              <div class="tgroup" role="group" aria-label="Edge labels">
+                <span class="tg-cap">labels</span>
+                <button class="cbtn on" id="tauBtn" data-cmd="tau" data-tip="Show or hide the labels of τ transitions">τ</button>
+                <button class="cbtn" id="normBtn" data-cmd="norm" data-tip="Label actions with their tag-equivalence-normalized tags">norm tags</button>
+              </div>
+            </div>
+            <div class="popover spacing-pop" id="spacingPanel">
+              <h5>Layout spacing</h5>
+              <label class="spacing-row"><span>horizontal</span><input type="range" id="stretchX" min="0.4" max="4" step="0.1" /><output id="stretchXVal"></output></label>
+              <label class="spacing-row"><span>vertical</span><input type="range" id="stretchY" min="0.4" max="4" step="0.1" /><output id="stretchYVal"></output></label>
+              <button class="mini-btn" id="spacingReset">reset</button>
+            </div>
+          </div>
+
+          <!-- editor bottom split -->
+          <div id="editorRail">
+            <div class="ed-head" id="edHead">
+              <button class="rail-btn" id="editorToggle" data-icon="chevron-up" data-cmd="editor" data-tip="Show or hide the editor"></button>
+              <div class="ed-tabs">
+                <div class="ed-tab active" id="editorTitle">editor</div>
+              </div>
+              <button class="rail-btn" id="saveBtn" data-cmd="save" data-tip="Save the buffer to its file" disabled style="width: auto; padding: 0 8px">
+                <span class="ic" data-icon="save"></span><span id="saveLabel">save</span>
+              </button>
+              <button class="rail-btn" id="syntaxBtn" data-cmd="guide" data-tip="QUARC syntax guide" style="width: auto; padding: 0 8px">
+                <span class="ic" data-icon="book-open"></span><span>syntax</span>
+              </button>
+              <span class="label-cap" style="margin-left: auto">live typecheck (debounced)</span>
+            </div>
+            <div class="ed-host">
+              <div id="editorBody"></div>
+              <div class="diag-strip" id="diagStrip"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Inspector -->
+        <div class="pane" id="right">
+          <div class="pane-head">
+            <span class="label-cap" id="inspectorTitle">Inspector</span>
+            <span class="label-cap" id="inspectorSub"></span>
+          </div>
+          <div class="pane-body" id="inspectorBody"></div>
+        </div>
+      </div>
+
+      <!-- ───────── Status bar (full width) ───────── -->
+      <div id="statusbar">
+        <div class="s job" id="stJob"><span class="spinner"></span><span id="stJobText">ready</span>
+          <button class="st-cancel hidden" id="stCancel" data-cmd="cancel" data-tip="Cancel the running job">cancel</button></div>
+        <div class="s" id="stView"></div>
+        <div class="s st-warn hidden" id="stLayout"></div>
+        <div class="spacer"></div>
+        <div class="s diag-count" id="stDiag"></div>
+        <div class="s"><b id="stStates">0</b> states</div>
+        <div class="s"><b id="stEdges">0</b> transitions</div>
+      </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <div class="drop-hint hidden" id="dropHint"><div><span class="ic" data-icon="download"></span>Drop a .quarc file to open it</div></div>
+
+    <!-- QUARC syntax guide (rendered from QUARC_SYNTAX.md) -->
+    <div id="guideOverlay" class="guide-overlay hidden">
+      <div class="guide-card">
+        <div class="guide-head">
+          <span class="ic" data-icon="book-open"></span>
+          <span class="guide-title">QUARC syntax guide</span>
+          <button class="rail-btn" id="guideClose" title="Close (Esc)" data-icon="x"></button>
+        </div>
+        <div class="guide-body" id="guideBody"></div>
+      </div>
+    </div>
+
+    <!-- Command palette -->
+    <div id="paletteOverlay" class="pal-overlay hidden">
+      <div class="pal-card" role="dialog" aria-label="Command palette">
+        <div class="pal-search"><span class="ic" data-icon="search"></span><input id="palInput" type="text" spellcheck="false" placeholder="Type a command, configuration or file…" /></div>
+        <div class="pal-list" id="palList"></div>
+        <div class="pal-foot"><span><kbd>↑</kbd><kbd>↓</kbd> select</span><span><kbd>Enter</kbd> run</span><span><kbd>Esc</kbd> close</span></div>
+      </div>
+    </div>
+
+    <!-- Keyboard shortcut sheet -->
+    <div id="keysOverlay" class="guide-overlay hidden">
+      <div class="guide-card keys-card">
+        <div class="guide-head">
+          <span class="ic" data-icon="keyboard"></span>
+          <span class="guide-title">Keyboard shortcuts</span>
+          <button class="rail-btn" id="keysClose" data-tip="Close (Esc)" data-icon="x"></button>
+        </div>
+        <div class="guide-body" id="keysBody"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
