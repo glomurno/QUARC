@@ -5,5 +5,6 @@ export default defineConfig({
   clearScreen: false,
   // Allow importing QUARC_SYNTAX.md from the repo root (one level above gui/).
   server: { port: 1420, strictPort: true, fs: { allow: [".."] } },
-  build: { target: "esnext" },
+  // Lowered for the oldest supported WebView: Safari 15 / WebKit on macOS 12.
+  build: { target: "safari15" },
 });

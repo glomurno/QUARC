@@ -20,7 +20,9 @@ jobs:
       matrix:
         include:
           # ubuntu-22.04 pins WebKitGTK 4.1 + an AppImage-friendly glibc.
-          - { os: ubuntu-22.04, target: linux-x86_64 }
+          # - { os: ubuntu-22.04, target: linux-x86_64 }
+          # Intel macOS; MACOSX_DEPLOYMENT_TARGET below keeps it running on 12.x.
+          - { os: macos-15-intel, target: macos-x86_64 }
           # - { os: macos-14,     target: macos-arm64 }
           # - { os: windows-latest, target: windows-x86_64, experimental: true }
 
@@ -29,6 +31,10 @@ jobs:
       CABAL_VERSION: "3.14.2.0"
       # Build the embedded engine with the release profile (read by copy-sidecar.sh).
       QUARC_CABAL_OPT: "--project-file=cabal.project.release"
+      # Oldest macOS the app must run on (Monterey). Read by clang (GHC's C
+      # compiler and linker), rustc and Tauri; ignored on other OSes. Keep in
+      # sync with bundle.macOS.minimumSystemVersion in tauri.conf.json.
+      MACOSX_DEPLOYMENT_TARGET: "12.0"
 
     steps:
       - uses: actions/checkout@v4.4.0
@@ -117,6 +123,29 @@ jobs:
               || { echo "::error::$lib does not resolve inside the AppImage"; exit 1; }
           done
           "$ROOT/usr/bin/quarc" --version
+
+      # The engine must link only against OS-provided libraries (GMP is static in
+      # GHC's macOS bindists; hmatrix uses the Accelerate framework), and both
+      # binaries must not demand a newer macOS than MACOSX_DEPLOYMENT_TARGET.
+      - name: Verify app binaries (macOS)
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          APP="$(find gui/src-tauri/target/release/bundle/macos -maxdepth 1 -name '*.app' | head -n 1)"
+          for bin in "$APP"/Contents/MacOS/*; do
+            echo "== $bin"
+            otool -L "$bin"
+            if otool -L "$bin" | tail -n +2 | grep -vE '^\s*(/usr/lib/|/System/Library/)'; then
+              echo "::error::$bin links a non-system library"; exit 1
+            fi
+            MINOS="$(vtool -show-build "$bin" | awk '/minos/ { print $2; exit }')"
+            echo "minos=$MINOS"
+            if [ "$(printf '%s\n%s\n' "$MINOS" "$MACOSX_DEPLOYMENT_TARGET" | sort -V | tail -n 1)" != "$MACOSX_DEPLOYMENT_TARGET" ]; then
+              echo "::error::$bin requires macOS $MINOS > $MACOSX_DEPLOYMENT_TARGET"; exit 1
+            fi
+          done
+          "$APP"/Contents/MacOS/quarc --version
 
       # Flatten the per-format bundle subdirs into one dir so the umbrella's
       # merge-multiple download lands installers flat (the .app dir is skipped;

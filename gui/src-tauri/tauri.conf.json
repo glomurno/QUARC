@@ -36,6 +36,9 @@
       "icons/icon.ico"
     ],
     "externalBin": ["binaries/quarc"],
+    "macOS": {
+      "minimumSystemVersion": "12.0"
+    },
     "linux": {
       "appimage": {
         "files": {
